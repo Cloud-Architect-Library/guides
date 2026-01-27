@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="es" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-seguridad/guia-seguridad-aws" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">🔐 Guía de Seguridad AWS - Primeros Pasos | Cloud Architect Library</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://Cloud-Architect-Library.github.io/guides/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://Cloud-Architect-Library.github.io/guides/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://Cloud-Architect-Library.github.io/guides/docs/seguridad/guia-seguridad-aws"><meta data-rh="true" property="og:locale" content="es"><meta data-rh="true" name="docusaurus_locale" content="es"><meta data-rh="true" name="docsearch:language" content="es"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="🔐 Guía de Seguridad AWS - Primeros Pasos | Cloud Architect Library"><meta data-rh="true" name="description" content="📋 Introducción"><meta data-rh="true" property="og:description" content="📋 Introducción"><link data-rh="true" rel="icon" href="/guides/img/favicon.png"><link data-rh="true" rel="canonical" href="https://Cloud-Architect-Library.github.io/guides/docs/seguridad/guia-seguridad-aws"><link data-rh="true" rel="alternate" href="https://Cloud-Architect-Library.github.io/guides/docs/seguridad/guia-seguridad-aws" hreflang="es"><link data-rh="true" rel="alternate" href="https://Cloud-Architect-Library.github.io/guides/docs/seguridad/guia-seguridad-aws" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Seguridad","item":"https://Cloud-Architect-Library.github.io/guides/docs/category/seguridad"},{"@type":"ListItem","position":2,"name":"Guía de Seguridad AWS","item":"https://Cloud-Architect-Library.github.io/guides/docs/seguridad/guia-seguridad-aws"}]}</script><link rel="stylesheet" href="/guides/assets/css/styles.474063b3.css">
+<script src="/guides/assets/js/runtime~main.24fad1ed.js" defer="defer"></script>
+<script src="/guides/assets/js/main.02eb86c1.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/guides/img/logo.png"><div role="region" aria-label="Saltar al contenido principal"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Saltar al contenido principal</a></div><nav aria-label="Principal" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Alternar barra lateral" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/guides/"><div class="navbar__logo"><img src="/guides/img/logo.png" alt="Cloud Architect Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/guides/img/logo.png" alt="Cloud Architect Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Cloud Architect Library</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/guides/docs/intro">Guías</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/Cloud-Architect-Library/guides" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Cambiar entre modo oscuro y claro (actualmente system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Volver al principio" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Barra lateral de Documentos" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/guides/docs/intro"><span title="Introducción" class="linkLabel_WmDU">Introducción</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/guides/docs/category/computación"><span title="Computación" class="categoryLinkLabel_W154">Computación</span></a><button aria-label="Ampliar la categoría &#x27;Computación&#x27; de la barra lateral" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/guides/docs/category/seguridad"><span title="Seguridad" class="categoryLinkLabel_W154">Seguridad</span></a><button aria-label="Colapsar categoría &#x27;Seguridad&#x27; de la barra lateral" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/guides/docs/seguridad/iam"><span title="AWS IAM" class="linkLabel_WmDU">AWS IAM</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/guides/docs/seguridad/guia-seguridad-aws"><span title="Guía de Seguridad AWS" class="linkLabel_WmDU">Guía de Seguridad AWS</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/guides/docs/category/networking"><span title="Networking" class="categoryLinkLabel_W154">Networking</span></a><button aria-label="Ampliar la categoría &#x27;Networking&#x27; de la barra lateral" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Rastro de navegación"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Página de Inicio" class="breadcrumbs__link" href="/guides/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/guides/docs/category/seguridad"><span>Seguridad</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Guía de Seguridad AWS</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">En esta página</button></div><div class="theme-doc-markdown markdown"><header><h1>🔐 Guía de Seguridad AWS - Primeros Pasos</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-introducción">📋 Introducción<a href="#-introducción" class="hash-link" aria-label="Enlace directo al 📋 Introducción" title="Enlace directo al 📋 Introducción" translate="no">​</a></h2>
+<p>Esta guía proporciona las mejores prácticas fundamentales para asegurar su cuenta de AWS. Está diseñada para ayudarle a implementar una base sólida de seguridad siguiendo las recomendaciones de AWS.</p>
+<p><strong>Objetivo</strong>: Establecer controles de seguridad esenciales que protejan sus recursos en la nube.</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="1️⃣-modelo-de-responsabilidad-compartida">1️⃣ Modelo de Responsabilidad Compartida<a href="#1️⃣-modelo-de-responsabilidad-compartida" class="hash-link" aria-label="Enlace directo al 1️⃣ Modelo de Responsabilidad Compartida" title="Enlace directo al 1️⃣ Modelo de Responsabilidad Compartida" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-es">¿Qué es?<a href="#qué-es" class="hash-link" aria-label="Enlace directo al ¿Qué es?" title="Enlace directo al ¿Qué es?" translate="no">​</a></h3>
+<p>AWS opera bajo un modelo de <strong>responsabilidad compartida</strong> donde tanto AWS como el cliente tienen responsabilidades específicas en materia de seguridad.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="responsabilidades-de-aws">Responsabilidades de AWS<a href="#responsabilidades-de-aws" class="hash-link" aria-label="Enlace directo al Responsabilidades de AWS" title="Enlace directo al Responsabilidades de AWS" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Seguridad DE la nube</strong>: Infraestructura física, hardware, software, redes y centros de datos</li>
+<li class="">Protección de la infraestructura global que ejecuta todos los servicios de AWS</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="responsabilidades-del-cliente">Responsabilidades del Cliente<a href="#responsabilidades-del-cliente" class="hash-link" aria-label="Enlace directo al Responsabilidades del Cliente" title="Enlace directo al Responsabilidades del Cliente" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Seguridad EN la nube</strong>: Datos, aplicaciones, configuración de servicios</li>
+<li class="">Gestión de identidades y accesos (IAM)</li>
+<li class="">Configuración de seguridad de los servicios que utiliza</li>
+<li class="">Cifrado de datos en tránsito y en reposo</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-documentación-oficial">📚 Documentación Oficial<a href="#-documentación-oficial" class="hash-link" aria-label="Enlace directo al 📚 Documentación Oficial" title="Enlace directo al 📚 Documentación Oficial" translate="no">​</a></h3>
+<ul>
+<li class=""><a href="https://aws.amazon.com/compliance/shared-responsibility-model/" target="_blank" rel="noopener noreferrer" class="">Modelo de Responsabilidad Compartida de AWS</a></li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="2️⃣-protección-de-la-cuenta-root">2️⃣ Protección de la Cuenta Root<a href="#2️⃣-protección-de-la-cuenta-root" class="hash-link" aria-label="Enlace directo al 2️⃣ Protección de la Cuenta Root" title="Enlace directo al 2️⃣ Protección de la Cuenta Root" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="por-qué-es-importante">¿Por qué es importante?<a href="#por-qué-es-importante" class="hash-link" aria-label="Enlace directo al ¿Por qué es importante?" title="Enlace directo al ¿Por qué es importante?" translate="no">​</a></h3>
+<p>La cuenta root tiene <strong>acceso completo e irrestricto</strong> a todos los recursos de su cuenta AWS. Su compromiso podría resultar en pérdida total de control.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-mejores-prácticas">✅ Mejores Prácticas<a href="#-mejores-prácticas" class="hash-link" aria-label="Enlace directo al ✅ Mejores Prácticas" title="Enlace directo al ✅ Mejores Prácticas" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-habilitar-mfa-autenticación-multifactor">1. Habilitar MFA (Autenticación Multifactor)<a href="#1-habilitar-mfa-autenticación-multifactor" class="hash-link" aria-label="Enlace directo al 1. Habilitar MFA (Autenticación Multifactor)" title="Enlace directo al 1. Habilitar MFA (Autenticación Multifactor)" translate="no">​</a></h4>
+<ul>
+<li class=""><strong>Obligatorio</strong> para la cuenta root</li>
+<li class="">Usar un dispositivo MFA físico o virtual (Google Authenticator, Authy)</li>
+<li class="">Nunca compartir el dispositivo MFA</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-uso-limitado-de-root">2. Uso Limitado de Root<a href="#2-uso-limitado-de-root" class="hash-link" aria-label="Enlace directo al 2. Uso Limitado de Root" title="Enlace directo al 2. Uso Limitado de Root" translate="no">​</a></h4>
+<p><strong>SOLO usar la cuenta root para:</strong></p>
+<ul>
+<li class="">Cambiar el plan de soporte de AWS</li>
+<li class="">Cerrar la cuenta de AWS</li>
+<li class="">Cambiar la configuración de la cuenta (nombre, email, información de facturación)</li>
+<li class="">Restaurar permisos de usuario IAM</li>
+</ul>
+<p><strong>NO usar root para:</strong></p>
+<ul>
+<li class="">Operaciones diarias</li>
+<li class="">Crear recursos</li>
+<li class="">Gestionar servicios</li>
+<li class="">Acceso a la consola de AWS</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-credenciales-seguras">3. Credenciales Seguras<a href="#3-credenciales-seguras" class="hash-link" aria-label="Enlace directo al 3. Credenciales Seguras" title="Enlace directo al 3. Credenciales Seguras" translate="no">​</a></h4>
+<ul>
+<li class="">Usar una contraseña fuerte y única (mínimo 14 caracteres)</li>
+<li class="">No compartir las credenciales root con nadie</li>
+<li class="">Almacenar las credenciales en un lugar seguro (gestor de contraseñas)</li>
+<li class="">No crear access keys para la cuenta root</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-documentación-oficial-1">📚 Documentación Oficial<a href="#-documentación-oficial-1" class="hash-link" aria-label="Enlace directo al 📚 Documentación Oficial" title="Enlace directo al 📚 Documentación Oficial" translate="no">​</a></h3>
+<ul>
+<li class=""><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html" target="_blank" rel="noopener noreferrer" class="">Protección de la Cuenta Root</a></li>
+<li class=""><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_enable.html" target="_blank" rel="noopener noreferrer" class="">Habilitar MFA</a></li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="3️⃣-iam-y-principio-de-mínimo-privilegio">3️⃣ IAM y Principio de Mínimo Privilegio<a href="#3️⃣-iam-y-principio-de-mínimo-privilegio" class="hash-link" aria-label="Enlace directo al 3️⃣ IAM y Principio de Mínimo Privilegio" title="Enlace directo al 3️⃣ IAM y Principio de Mínimo Privilegio" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-es-iam">¿Qué es IAM?<a href="#qué-es-iam" class="hash-link" aria-label="Enlace directo al ¿Qué es IAM?" title="Enlace directo al ¿Qué es IAM?" translate="no">​</a></h3>
+<p>AWS Identity and Access Management (IAM) permite controlar de forma segura el acceso a los servicios y recursos de AWS.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="principio-de-mínimo-privilegio">Principio de Mínimo Privilegio<a href="#principio-de-mínimo-privilegio" class="hash-link" aria-label="Enlace directo al Principio de Mínimo Privilegio" title="Enlace directo al Principio de Mínimo Privilegio" translate="no">​</a></h3>
+<p><strong>Otorgar únicamente los permisos estrictamente necesarios</strong> para realizar una tarea específica, durante el tiempo necesario.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-mejores-prácticas-1">✅ Mejores Prácticas<a href="#-mejores-prácticas-1" class="hash-link" aria-label="Enlace directo al ✅ Mejores Prácticas" title="Enlace directo al ✅ Mejores Prácticas" translate="no">​</a></h3>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-usar-roles-en-lugar-de-usuarios">1. Usar Roles en lugar de Usuarios<a href="#1-usar-roles-en-lugar-de-usuarios" class="hash-link" aria-label="Enlace directo al 1. Usar Roles en lugar de Usuarios" title="Enlace directo al 1. Usar Roles en lugar de Usuarios" translate="no">​</a></h4>
+<p><strong>Ventajas de los Roles:</strong></p>
+<ul>
+<li class="">Proporcionan credenciales temporales que expiran automáticamente</li>
+<li class="">No requieren gestión de access keys permanentes</li>
+<li class="">Ideales para aplicaciones y servicios</li>
+<li class="">Permiten federación con proveedores de identidad externos (Azure AD, Google Workspace)</li>
+</ul>
+<p><strong>Cuándo usar Roles:</strong></p>
+<ul>
+<li class="">Aplicaciones que se ejecutan en EC2</li>
+<li class="">Servicios de AWS que necesitan acceder a otros servicios</li>
+<li class="">Usuarios federados desde sistemas externos</li>
+<li class="">Acceso entre cuentas de AWS</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-políticas-gestionadas-vs-inline">2. Políticas Gestionadas vs Inline<a href="#2-políticas-gestionadas-vs-inline" class="hash-link" aria-label="Enlace directo al 2. Políticas Gestionadas vs Inline" title="Enlace directo al 2. Políticas Gestionadas vs Inline" translate="no">​</a></h4>
+<p><strong>Políticas Gestionadas por AWS:</strong></p>
+<ul>
+<li class="">✅ Preferir siempre que sea posible</li>
+<li class="">Mantenidas y actualizadas por AWS</li>
+<li class="">Cubren casos de uso comunes</li>
+<li class="">Ejemplos: <code>ReadOnlyAccess</code>, <code>PowerUserAccess</code>, <code>SecurityAudit</code></li>
+</ul>
+<p><strong>Políticas Personalizadas:</strong></p>
+<ul>
+<li class="">Crear solo cuando las políticas de AWS no cubren el caso de uso</li>
+<li class="">Versionar las políticas personalizadas</li>
+<li class="">Documentar el propósito de cada política</li>
+</ul>
+<p><strong>Políticas Inline:</strong></p>
+<ul>
+<li class="">❌ Evitar (difíciles de auditar y mantener)</li>
+<li class="">Solo usar en casos muy específicos</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-requerir-mfa">3. Requerir MFA<a href="#3-requerir-mfa" class="hash-link" aria-label="Enlace directo al 3. Requerir MFA" title="Enlace directo al 3. Requerir MFA" translate="no">​</a></h4>
+<p><strong>Implementar MFA para:</strong></p>
+<ul>
+<li class="">Acceso a la consola de AWS (obligatorio)</li>
+<li class="">Operaciones sensibles (eliminar recursos, cambiar configuraciones críticas)</li>
+<li class="">Acceso mediante CLI usando AWS STS</li>
+</ul>
+<p><strong>Usar condiciones en políticas:</strong></p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token property" style="color:#36acaa">&quot;Condition&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;BoolIfExists&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">&quot;aws:MultiFactorAuthPresent&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;true&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-rotación-de-credenciales">4. Rotación de Credenciales<a href="#4-rotación-de-credenciales" class="hash-link" aria-label="Enlace directo al 4. Rotación de Credenciales" title="Enlace directo al 4. Rotación de Credenciales" translate="no">​</a></h4>
+<p><strong>Access Keys:</strong></p>
+<ul>
+<li class="">Rotar cada 90 días como máximo</li>
+<li class="">Usar AWS Secrets Manager para automatizar la rotación</li>
+<li class="">Eliminar access keys no utilizadas</li>
+<li class="">Monitorizar el último uso de credenciales</li>
+</ul>
+<p><strong>Contraseñas:</strong></p>
+<ul>
+<li class="">Implementar política de contraseñas robusta</li>
+<li class="">Requerir cambio periódico (90-180 días)</li>
+<li class="">Longitud mínima de 14 caracteres</li>
+<li class="">Complejidad: mayúsculas, minúsculas, números, símbolos</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-documentación-oficial-2">📚 Documentación Oficial<a href="#-documentación-oficial-2" class="hash-link" aria-label="Enlace directo al 📚 Documentación Oficial" title="Enlace directo al 📚 Documentación Oficial" translate="no">​</a></h3>
+<ul>
+<li class=""><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html" target="_blank" rel="noopener noreferrer" class="">IAM Best Practices</a></li>
+<li class=""><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html" target="_blank" rel="noopener noreferrer" class="">IAM Roles</a></li>
+<li class=""><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html" target="_blank" rel="noopener noreferrer" class="">Políticas de IAM</a></li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="4️⃣-iam-access-analyzer">4️⃣ IAM Access Analyzer<a href="#4️⃣-iam-access-analyzer" class="hash-link" aria-label="Enlace directo al 4️⃣ IAM Access Analyzer" title="Enlace directo al 4️⃣ IAM Access Analyzer" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-es-1">¿Qué es?<a href="#qué-es-1" class="hash-link" aria-label="Enlace directo al ¿Qué es?" title="Enlace directo al ¿Qué es?" translate="no">​</a></h3>
+<p>Herramienta <strong>gratuita</strong> que analiza políticas de recursos para identificar aquellos compartidos con entidades externas a su cuenta u organización.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-detecta">¿Qué detecta?<a href="#qué-detecta" class="hash-link" aria-label="Enlace directo al ¿Qué detecta?" title="Enlace directo al ¿Qué detecta?" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Buckets S3</strong> públicos o compartidos con otras cuentas</li>
+<li class=""><strong>Roles IAM</strong> asumibles desde cuentas externas</li>
+<li class=""><strong>Claves KMS</strong> accesibles externamente</li>
+<li class=""><strong>Funciones Lambda</strong> con permisos de invocación externa</li>
+<li class=""><strong>Colas SQS</strong> y <strong>Tópicos SNS</strong> compartidos</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="funcionalidad-adicional-policy-generation">Funcionalidad Adicional: Policy Generation<a href="#funcionalidad-adicional-policy-generation" class="hash-link" aria-label="Enlace directo al Funcionalidad Adicional: Policy Generation" title="Enlace directo al Funcionalidad Adicional: Policy Generation" translate="no">​</a></h3>
+<p>Genera políticas de IAM basadas en la <strong>actividad real</strong> registrada en CloudTrail:</p>
+<ul>
+<li class="">Analiza los logs de acceso</li>
+<li class="">Identifica los permisos realmente utilizados</li>
+<li class="">Genera políticas con permisos mínimos necesarios</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-cómo-implementar">✅ Cómo Implementar<a href="#-cómo-implementar" class="hash-link" aria-label="Enlace directo al ✅ Cómo Implementar" title="Enlace directo al ✅ Cómo Implementar" translate="no">​</a></h3>
+<ol>
+<li class=""><strong>Habilitar IAM Access Analyzer</strong> en la consola de AWS</li>
+<li class="">Crear un analyzer de tipo &quot;Account&quot; o &quot;Organization&quot;</li>
+<li class="">Revisar los findings (hallazgos) regularmente</li>
+<li class="">Remediar accesos no autorizados</li>
+<li class="">Usar Policy Generation para refinar permisos</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-documentación-oficial-3">📚 Documentación Oficial<a href="#-documentación-oficial-3" class="hash-link" aria-label="Enlace directo al 📚 Documentación Oficial" title="Enlace directo al 📚 Documentación Oficial" translate="no">​</a></h3>
+<ul>
+<li class=""><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html" target="_blank" rel="noopener noreferrer" class="">IAM Access Analyzer</a></li>
+<li class=""><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-policy-generation.html" target="_blank" rel="noopener noreferrer" class="">Policy Generation</a></li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="5️⃣-aws-organizations">5️⃣ AWS Organizations<a href="#5️⃣-aws-organizations" class="hash-link" aria-label="Enlace directo al 5️⃣ AWS Organizations" title="Enlace directo al 5️⃣ AWS Organizations" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-es-2">¿Qué es?<a href="#qué-es-2" class="hash-link" aria-label="Enlace directo al ¿Qué es?" title="Enlace directo al ¿Qué es?" translate="no">​</a></h3>
+<p>Servicio que permite <strong>gestionar y gobernar múltiples cuentas de AWS</strong> de forma centralizada.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="beneficios">Beneficios<a href="#beneficios" class="hash-link" aria-label="Enlace directo al Beneficios" title="Enlace directo al Beneficios" translate="no">​</a></h3>
+<ul>
+<li class=""><strong>Facturación consolidada</strong>: Una sola factura para todas las cuentas</li>
+<li class=""><strong>Gestión centralizada</strong>: Políticas y controles aplicados a toda la organización</li>
+<li class=""><strong>Separación de entornos</strong>: Desarrollo, Testing, Producción en cuentas separadas</li>
+<li class=""><strong>Service Control Policies (SCPs)</strong>: Restricciones a nivel de organización</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="estructura-recomendada">Estructura Recomendada<a href="#estructura-recomendada" class="hash-link" aria-label="Enlace directo al Estructura Recomendada" title="Enlace directo al Estructura Recomendada" translate="no">​</a></h3>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">Organización</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── Management Account (Cuenta de gestión)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── OU: Security (Unidad Organizativa de Seguridad)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   ├── Cuenta: Security Tools</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   └── Cuenta: Log Archive</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── OU: Production (Producción)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   ├── Cuenta: Prod App 1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   └── Cuenta: Prod App 2</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">├── OU: Development (Desarrollo)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   ├── Cuenta: Dev App 1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">│   └── Cuenta: Dev App 2</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">└── OU: Testing (Pruebas)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    └── Cuenta: Test Environment</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="service-control-policies-scps">Service Control Policies (SCPs)<a href="#service-control-policies-scps" class="hash-link" aria-label="Enlace directo al Service Control Policies (SCPs)" title="Enlace directo al Service Control Policies (SCPs)" translate="no">​</a></h3>
+<p><strong>Políticas que establecen límites máximos de permisos</strong> para cuentas en la organización.</p>
+<p><strong>Ejemplos de uso:</strong></p>
+<ul>
+<li class="">Restringir regiones permitidas (ej: solo EU)</li>
+<li class="">Prohibir desactivación de servicios de seguridad (CloudTrail, GuardDuty)</li>
+<li class="">Requerir cifrado para todos los recursos</li>
+<li class="">Prohibir creación de usuarios IAM (forzar uso de roles)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-mejores-prácticas-2">✅ Mejores Prácticas<a href="#-mejores-prácticas-2" class="hash-link" aria-label="Enlace directo al ✅ Mejores Prácticas" title="Enlace directo al ✅ Mejores Prácticas" translate="no">​</a></h3>
+<ol>
+<li class="">
+<p><strong>No usar la Management Account para workloads</strong></p>
+<ul>
+<li class="">Solo para gestión de la organización</li>
+<li class="">Minimizar el acceso a esta cuenta</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Crear cuentas separadas por entorno</strong></p>
+<ul>
+<li class="">Desarrollo, Testing, Producción</li>
+<li class="">Aislamiento de recursos y costos</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Implementar SCPs restrictivas</strong></p>
+<ul>
+<li class="">Denegar acciones peligrosas</li>
+<li class="">Requerir controles de seguridad</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Centralizar logs y seguridad</strong></p>
+<ul>
+<li class="">Cuenta dedicada para logs (Log Archive)</li>
+<li class="">Cuenta dedicada para herramientas de seguridad</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="-documentación-oficial-4">📚 Documentación Oficial<a href="#-documentación-oficial-4" class="hash-link" aria-label="Enlace directo al 📚 Documentación Oficial" title="Enlace directo al 📚 Documentación Oficial" translate="no">​</a></h3>
+<ul>
+<li class=""><a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html" target="_blank" rel="noopener noreferrer" class="">AWS Organizations</a></li>
+<li class=""><a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html" target="_blank" rel="noopener noreferrer" class="">Service Control Policies</a></li>
+<li class=""><a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_best-practices.html" target="_blank" rel="noopener noreferrer" class="">Best Practices</a></li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="6️⃣-servicios-de-seguridad-fundamentales">6️⃣ Servicios de Seguridad Fundamentales<a href="#6️⃣-servicios-de-seguridad-fundamentales" class="hash-link" aria-label="Enlace directo al 6️⃣ Servicios de Seguridad Fundamentales" title="Enlace directo al 6️⃣ Servicios de Seguridad Fundamentales" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="aws-cloudtrail">AWS CloudTrail<a href="#aws-cloudtrail" class="hash-link" aria-label="Enlace directo al AWS CloudTrail" title="Enlace directo al AWS CloudTrail" translate="no">​</a></h3>
+<p><strong>Auditoría de todas las acciones en su cuenta AWS</strong></p>
+<ul>
+<li class="">Registra todas las llamadas a la API</li>
+<li class="">Esencial para cumplimiento y auditoría</li>
+<li class="">Habilitar en todas las regiones</li>
+<li class="">Almacenar logs en S3 con cifrado</li>
+<li class="">Habilitar validación de integridad de logs</li>
+</ul>
+<p>📚 <a href="https://docs.aws.amazon.com/cloudtrail/" target="_blank" rel="noopener noreferrer" class="">CloudTrail Documentation</a></p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="amazon-guardduty">Amazon GuardDuty<a href="#amazon-guardduty" class="hash-link" aria-label="Enlace directo al Amazon GuardDuty" title="Enlace directo al Amazon GuardDuty" translate="no">​</a></h3>
+<p><strong>Detección de amenazas inteligente</strong></p>
+<ul>
+<li class="">Usa Machine Learning para detectar actividad maliciosa</li>
+<li class="">Analiza CloudTrail, VPC Flow Logs, DNS logs</li>
+<li class="">Detección de malware, criptominería, accesos no autorizados</li>
+<li class="">30 días de prueba gratuita</li>
+</ul>
+<p>📚 <a href="https://docs.aws.amazon.com/guardduty/" target="_blank" rel="noopener noreferrer" class="">GuardDuty Documentation</a></p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="aws-security-hub">AWS Security Hub<a href="#aws-security-hub" class="hash-link" aria-label="Enlace directo al AWS Security Hub" title="Enlace directo al AWS Security Hub" translate="no">​</a></h3>
+<p><strong>Dashboard centralizado de seguridad</strong></p>
+<ul>
+<li class="">Agrega hallazgos de múltiples servicios</li>
+<li class="">Verifica cumplimiento con estándares (CIS, PCI-DSS)</li>
+<li class="">Prioriza hallazgos por severidad</li>
+<li class="">Integración con GuardDuty, Inspector, Macie</li>
+</ul>
+<p>📚 <a href="https://docs.aws.amazon.com/securityhub/" target="_blank" rel="noopener noreferrer" class="">Security Hub Documentation</a></p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="aws-config">AWS Config<a href="#aws-config" class="hash-link" aria-label="Enlace directo al AWS Config" title="Enlace directo al AWS Config" translate="no">​</a></h3>
+<p><strong>Auditoría continua de configuraciones</strong></p>
+<ul>
+<li class="">Registra cambios en recursos</li>
+<li class="">Verifica cumplimiento con reglas</li>
+<li class="">Historial completo de configuraciones</li>
+<li class="">Alertas de cambios no autorizados</li>
+</ul>
+<p>📚 <a href="https://docs.aws.amazon.com/config/" target="_blank" rel="noopener noreferrer" class="">AWS Config Documentation</a></p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="7️⃣-protección-de-datos">7️⃣ Protección de Datos<a href="#7️⃣-protección-de-datos" class="hash-link" aria-label="Enlace directo al 7️⃣ Protección de Datos" title="Enlace directo al 7️⃣ Protección de Datos" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cifrado-en-reposo">Cifrado en Reposo<a href="#cifrado-en-reposo" class="hash-link" aria-label="Enlace directo al Cifrado en Reposo" title="Enlace directo al Cifrado en Reposo" translate="no">​</a></h3>
+<p><strong>Todos los datos almacenados deben estar cifrados</strong></p>
+<p><strong>Servicios que soportan cifrado:</strong></p>
+<ul>
+<li class=""><strong>S3</strong>: Cifrado del lado del servidor (SSE-S3, SSE-KMS)</li>
+<li class=""><strong>EBS</strong>: Volúmenes cifrados</li>
+<li class=""><strong>RDS</strong>: Cifrado de bases de datos</li>
+<li class=""><strong>DynamoDB</strong>: Cifrado en reposo</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cifrado-en-tránsito">Cifrado en Tránsito<a href="#cifrado-en-tránsito" class="hash-link" aria-label="Enlace directo al Cifrado en Tránsito" title="Enlace directo al Cifrado en Tránsito" translate="no">​</a></h3>
+<p><strong>Usar HTTPS/TLS para todas las comunicaciones</strong></p>
+<ul>
+<li class="">Certificados SSL/TLS mediante AWS Certificate Manager</li>
+<li class="">Forzar HTTPS en buckets S3</li>
+<li class="">Usar VPN o AWS Direct Connect para conexiones privadas</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="aws-kms-key-management-service">AWS KMS (Key Management Service)<a href="#aws-kms-key-management-service" class="hash-link" aria-label="Enlace directo al AWS KMS (Key Management Service)" title="Enlace directo al AWS KMS (Key Management Service)" translate="no">​</a></h3>
+<p><strong>Gestión centralizada de claves de cifrado</strong></p>
+<ul>
+<li class="">Crear Customer Managed Keys (CMK)</li>
+<li class="">Habilitar rotación automática anual</li>
+<li class="">Controlar acceso mediante políticas de claves</li>
+<li class="">Auditar uso de claves con CloudTrail</li>
+</ul>
+<p>📚 <a href="https://docs.aws.amazon.com/kms/latest/developerguide/best-practices.html" target="_blank" rel="noopener noreferrer" class="">KMS Best Practices</a></p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="aws-secrets-manager">AWS Secrets Manager<a href="#aws-secrets-manager" class="hash-link" aria-label="Enlace directo al AWS Secrets Manager" title="Enlace directo al AWS Secrets Manager" translate="no">​</a></h3>
+<p><strong>Gestión segura de credenciales</strong></p>
+<ul>
+<li class="">Almacenar contraseñas, API keys, tokens</li>
+<li class="">Rotación automática de secretos</li>
+<li class="">Integración con RDS, Redshift, DocumentDB</li>
+<li class="">Auditoría de acceso a secretos</li>
+</ul>
+<p>📚 <a href="https://docs.aws.amazon.com/secretsmanager/" target="_blank" rel="noopener noreferrer" class="">Secrets Manager Documentation</a></p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="8️⃣-seguridad-de-red">8️⃣ Seguridad de Red<a href="#8️⃣-seguridad-de-red" class="hash-link" aria-label="Enlace directo al 8️⃣ Seguridad de Red" title="Enlace directo al 8️⃣ Seguridad de Red" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="vpc-virtual-private-cloud">VPC (Virtual Private Cloud)<a href="#vpc-virtual-private-cloud" class="hash-link" aria-label="Enlace directo al VPC (Virtual Private Cloud)" title="Enlace directo al VPC (Virtual Private Cloud)" translate="no">​</a></h3>
+<p><strong>Red privada virtual aislada</strong></p>
+<p><strong>Mejores prácticas:</strong></p>
+<ul>
+<li class="">Usar subredes públicas y privadas</li>
+<li class="">Recursos sensibles en subredes privadas</li>
+<li class="">NAT Gateway para acceso a internet desde subredes privadas</li>
+<li class="">Security Groups restrictivos (principio de mínimo privilegio)</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="vpc-flow-logs">VPC Flow Logs<a href="#vpc-flow-logs" class="hash-link" aria-label="Enlace directo al VPC Flow Logs" title="Enlace directo al VPC Flow Logs" translate="no">​</a></h3>
+<p><strong>Monitoreo de tráfico de red</strong></p>
+<ul>
+<li class="">Captura información sobre tráfico IP</li>
+<li class="">Detecta patrones anómalos</li>
+<li class="">Ayuda en troubleshooting</li>
+<li class="">Almacenar en S3 o CloudWatch Logs</li>
+</ul>
+<p>📚 <a href="https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html" target="_blank" rel="noopener noreferrer" class="">VPC Flow Logs</a></p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="aws-waf-web-application-firewall">AWS WAF (Web Application Firewall)<a href="#aws-waf-web-application-firewall" class="hash-link" aria-label="Enlace directo al AWS WAF (Web Application Firewall)" title="Enlace directo al AWS WAF (Web Application Firewall)" translate="no">​</a></h3>
+<p><strong>Protección de aplicaciones web</strong></p>
+<ul>
+<li class="">Protege contra OWASP Top 10</li>
+<li class="">Rate limiting (límite de peticiones)</li>
+<li class="">Reglas gestionadas por AWS</li>
+<li class="">Reglas personalizadas</li>
+</ul>
+<p>📚 <a href="https://docs.aws.amazon.com/waf/" target="_blank" rel="noopener noreferrer" class="">AWS WAF Documentation</a></p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="aws-shield">AWS Shield<a href="#aws-shield" class="hash-link" aria-label="Enlace directo al AWS Shield" title="Enlace directo al AWS Shield" translate="no">​</a></h3>
+<p><strong>Protección contra ataques DDoS</strong></p>
+<ul>
+<li class=""><strong>Shield Standard</strong>: Incluido gratuitamente</li>
+<li class=""><strong>Shield Advanced</strong>: Protección avanzada ($3,000/mes)<!-- -->
+<ul>
+<li class="">Equipo de respuesta DDoS 24/7</li>
+<li class="">Protección de costos durante ataques</li>
+</ul>
+</li>
+</ul>
+<p>📚 <a href="https://docs.aws.amazon.com/shield/" target="_blank" rel="noopener noreferrer" class="">AWS Shield Documentation</a></p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="9️⃣-monitoreo-y-alertas">9️⃣ Monitoreo y Alertas<a href="#9️⃣-monitoreo-y-alertas" class="hash-link" aria-label="Enlace directo al 9️⃣ Monitoreo y Alertas" title="Enlace directo al 9️⃣ Monitoreo y Alertas" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="amazon-cloudwatch">Amazon CloudWatch<a href="#amazon-cloudwatch" class="hash-link" aria-label="Enlace directo al Amazon CloudWatch" title="Enlace directo al Amazon CloudWatch" translate="no">​</a></h3>
+<p><strong>Monitoreo de recursos y aplicaciones</strong></p>
+<ul>
+<li class="">Métricas de rendimiento</li>
+<li class="">Logs centralizados</li>
+<li class="">Alarmas personalizadas</li>
+<li class="">Dashboards visuales</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="amazon-eventbridge">Amazon EventBridge<a href="#amazon-eventbridge" class="hash-link" aria-label="Enlace directo al Amazon EventBridge" title="Enlace directo al Amazon EventBridge" translate="no">​</a></h3>
+<p><strong>Bus de eventos para automatización</strong></p>
+<ul>
+<li class="">Respuesta automática a eventos de seguridad</li>
+<li class="">Integración con Lambda para remediation</li>
+<li class="">Notificaciones mediante SNS</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="amazon-sns-simple-notification-service">Amazon SNS (Simple Notification Service)<a href="#amazon-sns-simple-notification-service" class="hash-link" aria-label="Enlace directo al Amazon SNS (Simple Notification Service)" title="Enlace directo al Amazon SNS (Simple Notification Service)" translate="no">​</a></h3>
+<p><strong>Notificaciones push</strong></p>
+<ul>
+<li class="">Alertas por email, SMS</li>
+<li class="">Integración con sistemas de ticketing</li>
+<li class="">Notificaciones a equipos de seguridad</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-cumplimiento-y-auditoría">🔟 Cumplimiento y Auditoría<a href="#-cumplimiento-y-auditoría" class="hash-link" aria-label="Enlace directo al 🔟 Cumplimiento y Auditoría" title="Enlace directo al 🔟 Cumplimiento y Auditoría" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="aws-artifact">AWS Artifact<a href="#aws-artifact" class="hash-link" aria-label="Enlace directo al AWS Artifact" title="Enlace directo al AWS Artifact" translate="no">​</a></h3>
+<p><strong>Acceso a informes de cumplimiento</strong></p>
+<ul>
+<li class="">Certificaciones de AWS (ISO, SOC, PCI-DSS)</li>
+<li class="">Informes de auditoría</li>
+<li class="">Acuerdos de cumplimiento</li>
+</ul>
+<p>📚 <a href="https://aws.amazon.com/artifact/" target="_blank" rel="noopener noreferrer" class="">AWS Artifact</a></p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="aws-audit-manager">AWS Audit Manager<a href="#aws-audit-manager" class="hash-link" aria-label="Enlace directo al AWS Audit Manager" title="Enlace directo al AWS Audit Manager" translate="no">​</a></h3>
+<p><strong>Automatización de auditorías</strong></p>
+<ul>
+<li class="">Recopilación continua de evidencias</li>
+<li class="">Frameworks de cumplimiento predefinidos</li>
+<li class="">Generación de informes de auditoría</li>
+</ul>
+<p>📚 <a href="https://docs.aws.amazon.com/audit-manager/" target="_blank" rel="noopener noreferrer" class="">Audit Manager Documentation</a></p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-roadmap-de-implementación-recomendado">📊 Roadmap de Implementación Recomendado<a href="#-roadmap-de-implementación-recomendado" class="hash-link" aria-label="Enlace directo al 📊 Roadmap de Implementación Recomendado" title="Enlace directo al 📊 Roadmap de Implementación Recomendado" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="fase-1-fundamentos-semana-1-2">Fase 1: Fundamentos (Semana 1-2)<a href="#fase-1-fundamentos-semana-1-2" class="hash-link" aria-label="Enlace directo al Fase 1: Fundamentos (Semana 1-2)" title="Enlace directo al Fase 1: Fundamentos (Semana 1-2)" translate="no">​</a></h3>
+<p><strong>Prioridad: CRÍTICA</strong></p>
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Habilitar MFA en cuenta root</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Crear política de contraseñas robusta</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Habilitar CloudTrail en todas las regiones</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Habilitar GuardDuty</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Habilitar Security Hub</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Habilitar AWS Config</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Habilitar IAM Access Analyzer</li>
+</ul>
+<p><strong>Tiempo estimado</strong>: 4-8 horas<br>
+<strong>Costo estimado</strong>: $10-100/mes</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="fase-2-protección-de-datos-semana-3-4">Fase 2: Protección de Datos (Semana 3-4)<a href="#fase-2-protección-de-datos-semana-3-4" class="hash-link" aria-label="Enlace directo al Fase 2: Protección de Datos (Semana 3-4)" title="Enlace directo al Fase 2: Protección de Datos (Semana 3-4)" translate="no">​</a></h3>
+<p><strong>Prioridad: ALTA</strong></p>
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Implementar cifrado en S3</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Cifrar volúmenes EBS</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Cifrar bases de datos RDS</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Configurar AWS KMS con rotación automática</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Migrar credenciales a Secrets Manager</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Habilitar VPC Flow Logs</li>
+</ul>
+<p><strong>Tiempo estimado</strong>: 8-16 horas<br>
+<strong>Costo estimado</strong>: $20-150/mes adicionales</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="fase-3-seguridad-avanzada-mes-2">Fase 3: Seguridad Avanzada (Mes 2)<a href="#fase-3-seguridad-avanzada-mes-2" class="hash-link" aria-label="Enlace directo al Fase 3: Seguridad Avanzada (Mes 2)" title="Enlace directo al Fase 3: Seguridad Avanzada (Mes 2)" translate="no">​</a></h3>
+<p><strong>Prioridad: MEDIA</strong></p>
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Implementar AWS WAF</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Configurar Amazon Macie (si maneja datos sensibles)</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Habilitar Amazon Inspector</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Implementar AWS Organizations (si tiene múltiples cuentas)</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> <!-- -->Configurar Service Control Policies</li>
+</ul>
+<p><strong>Tiempo estimado</strong>: 16-24 horas<br>
+<strong>Costo estimado</strong>: $50-500/mes adicionales</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-soporte-y-asistencia">📞 Soporte y Asistencia<a href="#-soporte-y-asistencia" class="hash-link" aria-label="Enlace directo al 📞 Soporte y Asistencia" title="Enlace directo al 📞 Soporte y Asistencia" translate="no">​</a></h2>
+<p>Si necesita ayuda con la implementación de estas mejores prácticas, nuestro equipo técnico está disponible para:</p>
+<ul>
+<li class="">Evaluación de seguridad de su cuenta actual</li>
+<li class="">Implementación automatizada de controles de seguridad</li>
+<li class="">Configuración de servicios de seguridad</li>
+<li class="">Auditoría y remediación de hallazgos</li>
+<li class="">Capacitación de su equipo</li>
+</ul>
+<p><strong>Contacto</strong>: [Información de contacto]</p>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-recursos-adicionales">📚 Recursos Adicionales<a href="#-recursos-adicionales" class="hash-link" aria-label="Enlace directo al 📚 Recursos Adicionales" title="Enlace directo al 📚 Recursos Adicionales" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="documentación-oficial-de-aws">Documentación Oficial de AWS<a href="#documentación-oficial-de-aws" class="hash-link" aria-label="Enlace directo al Documentación Oficial de AWS" title="Enlace directo al Documentación Oficial de AWS" translate="no">​</a></h3>
+<ul>
+<li class=""><a href="https://aws.amazon.com/security/best-practices/" target="_blank" rel="noopener noreferrer" class="">AWS Security Best Practices</a></li>
+<li class=""><a href="https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/" target="_blank" rel="noopener noreferrer" class="">AWS Well-Architected Framework - Security Pillar</a></li>
+<li class=""><a href="https://www.cisecurity.org/benchmark/amazon_web_services" target="_blank" rel="noopener noreferrer" class="">CIS AWS Foundations Benchmark</a></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="formación">Formación<a href="#formación" class="hash-link" aria-label="Enlace directo al Formación" title="Enlace directo al Formación" translate="no">​</a></h3>
+<ul>
+<li class=""><a href="https://aws.amazon.com/training/course-descriptions/security-fundamentals/" target="_blank" rel="noopener noreferrer" class="">AWS Security Fundamentals</a></li>
+<li class=""><a href="https://aws.amazon.com/training/learning-paths/security/" target="_blank" rel="noopener noreferrer" class="">AWS Security Learning Path</a></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="herramientas">Herramientas<a href="#herramientas" class="hash-link" aria-label="Enlace directo al Herramientas" title="Enlace directo al Herramientas" translate="no">​</a></h3>
+<ul>
+<li class=""><a href="https://aws.amazon.com/security-hub/" target="_blank" rel="noopener noreferrer" class="">AWS Security Hub</a></li>
+<li class=""><a href="https://aws.amazon.com/premiumsupport/technology/trusted-advisor/" target="_blank" rel="noopener noreferrer" class="">AWS Trusted Advisor</a></li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-notas-finales">📝 Notas Finales<a href="#-notas-finales" class="hash-link" aria-label="Enlace directo al 📝 Notas Finales" title="Enlace directo al 📝 Notas Finales" translate="no">​</a></h2>
+<p>Esta guía proporciona las bases para una cuenta AWS segura. La seguridad es un proceso continuo que requiere:</p>
+<ul>
+<li class=""><strong>Monitoreo constante</strong> de hallazgos de seguridad</li>
+<li class=""><strong>Actualización regular</strong> de políticas y controles</li>
+<li class=""><strong>Capacitación continua</strong> del equipo</li>
+<li class=""><strong>Revisión periódica</strong> de accesos y permisos</li>
+<li class=""><strong>Respuesta rápida</strong> a incidentes de seguridad</li>
+</ul>
+<p><strong>La seguridad es responsabilidad de todos.</strong></p>
+<hr>
+<p><strong>Versión</strong>: 1.0<br>
+<strong>Fecha</strong>: Enero 2026<br>
+<strong>Próxima revisión</strong>: Julio 2026</p>
+<hr>
+<p><em>Este documento es una guía de referencia. Para implementación técnica detallada, consulte con nuestro equipo de arquitectura.</em></p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/Cloud-Architect-Library/guides/tree/main/docs/seguridad/guia-seguridad-aws.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Editar esta página</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Página del documento"><a class="pagination-nav__link pagination-nav__link--prev" href="/guides/docs/seguridad/iam"><div class="pagination-nav__sublabel">Anterior</div><div class="pagination-nav__label">AWS IAM</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/guides/docs/category/networking"><div class="pagination-nav__sublabel">Siguiente</div><div class="pagination-nav__label">Networking</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#-introducción" class="table-of-contents__link toc-highlight">📋 Introducción</a></li><li><a href="#1️⃣-modelo-de-responsabilidad-compartida" class="table-of-contents__link toc-highlight">1️⃣ Modelo de Responsabilidad Compartida</a><ul><li><a href="#qué-es" class="table-of-contents__link toc-highlight">¿Qué es?</a></li><li><a href="#responsabilidades-de-aws" class="table-of-contents__link toc-highlight">Responsabilidades de AWS</a></li><li><a href="#responsabilidades-del-cliente" class="table-of-contents__link toc-highlight">Responsabilidades del Cliente</a></li><li><a href="#-documentación-oficial" class="table-of-contents__link toc-highlight">📚 Documentación Oficial</a></li></ul></li><li><a href="#2️⃣-protección-de-la-cuenta-root" class="table-of-contents__link toc-highlight">2️⃣ Protección de la Cuenta Root</a><ul><li><a href="#por-qué-es-importante" class="table-of-contents__link toc-highlight">¿Por qué es importante?</a></li><li><a href="#-mejores-prácticas" class="table-of-contents__link toc-highlight">✅ Mejores Prácticas</a></li><li><a href="#-documentación-oficial-1" class="table-of-contents__link toc-highlight">📚 Documentación Oficial</a></li></ul></li><li><a href="#3️⃣-iam-y-principio-de-mínimo-privilegio" class="table-of-contents__link toc-highlight">3️⃣ IAM y Principio de Mínimo Privilegio</a><ul><li><a href="#qué-es-iam" class="table-of-contents__link toc-highlight">¿Qué es IAM?</a></li><li><a href="#principio-de-mínimo-privilegio" class="table-of-contents__link toc-highlight">Principio de Mínimo Privilegio</a></li><li><a href="#-mejores-prácticas-1" class="table-of-contents__link toc-highlight">✅ Mejores Prácticas</a></li><li><a href="#-documentación-oficial-2" class="table-of-contents__link toc-highlight">📚 Documentación Oficial</a></li></ul></li><li><a href="#4️⃣-iam-access-analyzer" class="table-of-contents__link toc-highlight">4️⃣ IAM Access Analyzer</a><ul><li><a href="#qué-es-1" class="table-of-contents__link toc-highlight">¿Qué es?</a></li><li><a href="#qué-detecta" class="table-of-contents__link toc-highlight">¿Qué detecta?</a></li><li><a href="#funcionalidad-adicional-policy-generation" class="table-of-contents__link toc-highlight">Funcionalidad Adicional: Policy Generation</a></li><li><a href="#-cómo-implementar" class="table-of-contents__link toc-highlight">✅ Cómo Implementar</a></li><li><a href="#-documentación-oficial-3" class="table-of-contents__link toc-highlight">📚 Documentación Oficial</a></li></ul></li><li><a href="#5️⃣-aws-organizations" class="table-of-contents__link toc-highlight">5️⃣ AWS Organizations</a><ul><li><a href="#qué-es-2" class="table-of-contents__link toc-highlight">¿Qué es?</a></li><li><a href="#beneficios" class="table-of-contents__link toc-highlight">Beneficios</a></li><li><a href="#estructura-recomendada" class="table-of-contents__link toc-highlight">Estructura Recomendada</a></li><li><a href="#service-control-policies-scps" class="table-of-contents__link toc-highlight">Service Control Policies (SCPs)</a></li><li><a href="#-mejores-prácticas-2" class="table-of-contents__link toc-highlight">✅ Mejores Prácticas</a></li><li><a href="#-documentación-oficial-4" class="table-of-contents__link toc-highlight">📚 Documentación Oficial</a></li></ul></li><li><a href="#6️⃣-servicios-de-seguridad-fundamentales" class="table-of-contents__link toc-highlight">6️⃣ Servicios de Seguridad Fundamentales</a><ul><li><a href="#aws-cloudtrail" class="table-of-contents__link toc-highlight">AWS CloudTrail</a></li><li><a href="#amazon-guardduty" class="table-of-contents__link toc-highlight">Amazon GuardDuty</a></li><li><a href="#aws-security-hub" class="table-of-contents__link toc-highlight">AWS Security Hub</a></li><li><a href="#aws-config" class="table-of-contents__link toc-highlight">AWS Config</a></li></ul></li><li><a href="#7️⃣-protección-de-datos" class="table-of-contents__link toc-highlight">7️⃣ Protección de Datos</a><ul><li><a href="#cifrado-en-reposo" class="table-of-contents__link toc-highlight">Cifrado en Reposo</a></li><li><a href="#cifrado-en-tránsito" class="table-of-contents__link toc-highlight">Cifrado en Tránsito</a></li><li><a href="#aws-kms-key-management-service" class="table-of-contents__link toc-highlight">AWS KMS (Key Management Service)</a></li><li><a href="#aws-secrets-manager" class="table-of-contents__link toc-highlight">AWS Secrets Manager</a></li></ul></li><li><a href="#8️⃣-seguridad-de-red" class="table-of-contents__link toc-highlight">8️⃣ Seguridad de Red</a><ul><li><a href="#vpc-virtual-private-cloud" class="table-of-contents__link toc-highlight">VPC (Virtual Private Cloud)</a></li><li><a href="#vpc-flow-logs" class="table-of-contents__link toc-highlight">VPC Flow Logs</a></li><li><a href="#aws-waf-web-application-firewall" class="table-of-contents__link toc-highlight">AWS WAF (Web Application Firewall)</a></li><li><a href="#aws-shield" class="table-of-contents__link toc-highlight">AWS Shield</a></li></ul></li><li><a href="#9️⃣-monitoreo-y-alertas" class="table-of-contents__link toc-highlight">9️⃣ Monitoreo y Alertas</a><ul><li><a href="#amazon-cloudwatch" class="table-of-contents__link toc-highlight">Amazon CloudWatch</a></li><li><a href="#amazon-eventbridge" class="table-of-contents__link toc-highlight">Amazon EventBridge</a></li><li><a href="#amazon-sns-simple-notification-service" class="table-of-contents__link toc-highlight">Amazon SNS (Simple Notification Service)</a></li></ul></li><li><a href="#-cumplimiento-y-auditoría" class="table-of-contents__link toc-highlight">🔟 Cumplimiento y Auditoría</a><ul><li><a href="#aws-artifact" class="table-of-contents__link toc-highlight">AWS Artifact</a></li><li><a href="#aws-audit-manager" class="table-of-contents__link toc-highlight">AWS Audit Manager</a></li></ul></li><li><a href="#-roadmap-de-implementación-recomendado" class="table-of-contents__link toc-highlight">📊 Roadmap de Implementación Recomendado</a><ul><li><a href="#fase-1-fundamentos-semana-1-2" class="table-of-contents__link toc-highlight">Fase 1: Fundamentos (Semana 1-2)</a></li><li><a href="#fase-2-protección-de-datos-semana-3-4" class="table-of-contents__link toc-highlight">Fase 2: Protección de Datos (Semana 3-4)</a></li><li><a href="#fase-3-seguridad-avanzada-mes-2" class="table-of-contents__link toc-highlight">Fase 3: Seguridad Avanzada (Mes 2)</a></li></ul></li><li><a href="#-soporte-y-asistencia" class="table-of-contents__link toc-highlight">📞 Soporte y Asistencia</a></li><li><a href="#-recursos-adicionales" class="table-of-contents__link toc-highlight">📚 Recursos Adicionales</a><ul><li><a href="#documentación-oficial-de-aws" class="table-of-contents__link toc-highlight">Documentación Oficial de AWS</a></li><li><a href="#formación" class="table-of-contents__link toc-highlight">Formación</a></li><li><a href="#herramientas" class="table-of-contents__link toc-highlight">Herramientas</a></li></ul></li><li><a href="#-notas-finales" class="table-of-contents__link toc-highlight">📝 Notas Finales</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Contenido</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/guides/docs/intro">Introducción</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Recursos</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener noreferrer" class="footer__link-item">AWS Architecture Center<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Cloud Architect Library. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
