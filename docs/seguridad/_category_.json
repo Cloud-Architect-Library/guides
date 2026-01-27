@@ -1,0 +1,8 @@
+{
+    "label": "Seguridad",
+    "position": 3,
+    "link": {
+        "type": "generated-index",
+        "description": "Servicios de seguridad, identidad y cumplimiento en AWS."
+    }
+}

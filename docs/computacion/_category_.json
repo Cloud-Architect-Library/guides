@@ -1,0 +1,8 @@
+{
+    "label": "Computación",
+    "position": 2,
+    "link": {
+        "type": "generated-index",
+        "description": "Servicios de cómputo en AWS como EC2, Lambda y EKS."
+    }
+}

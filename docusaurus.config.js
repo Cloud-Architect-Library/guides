@@ -1,21 +1,21 @@
 // @ts-check
-import {themes as prismThemes} from 'prism-react-renderer';
+import { themes as prismThemes } from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Cloud Architect Library',
   tagline: 'Documentación Técnica y Buenas Prácticas',
-  favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.png',
 
   future: {
     v4: true,
   },
 
   // CONFIGURACIÓN CRÍTICA PARA GITHUB PAGES
-  url: 'https://Cloud-Architect-Library.github.io', 
+  url: 'https://Cloud-Architect-Library.github.io',
   baseUrl: '/guides/', // El nombre de tu repositorio con barras
-  organizationName: 'Cloud-Architect-Library', 
-  projectName: 'guides', 
+  organizationName: 'Cloud-Architect-Library',
+  projectName: 'guides',
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -36,9 +36,7 @@ const config = {
           editUrl:
             'https://github.com/Cloud-Architect-Library/guides/tree/main/',
         },
-        blog: {
-          showReadingTime: true,
-        },
+        blog: false,
         theme: {
           customCss: './src/css/custom.css',
         },
@@ -57,7 +55,7 @@ const config = {
         title: 'Cloud Architect Library',
         logo: {
           alt: 'Cloud Architect Logo',
-          src: 'img/logo.svg',
+          src: 'img/logo.png',
         },
         items: [
           {
@@ -66,7 +64,7 @@ const config = {
             position: 'left',
             label: 'Guías',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+
           {
             href: 'https://github.com/Cloud-Architect-Library/guides',
             label: 'GitHub',

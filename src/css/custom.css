@@ -6,25 +6,43 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #2e8555;
-  --ifm-color-primary-dark: #29784c;
-  --ifm-color-primary-darker: #277148;
-  --ifm-color-primary-darkest: #205d3b;
-  --ifm-color-primary-light: #33925d;
-  --ifm-color-primary-lighter: #359962;
-  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-color-primary: #eb5f07; /* AWS Orange */
+  --ifm-color-primary-dark: #d45606;
+  --ifm-color-primary-darker: #c85106;
+  --ifm-color-primary-darkest: #a54305;
+  --ifm-color-primary-light: #f37b30;
+  --ifm-color-primary-lighter: #f58945;
+  --ifm-color-primary-lightest: #f8b386;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  
+  /* Premium touches */
+  --ifm-background-color: #f8f9fa;
+  --ifm-navbar-background-color: #232f3e; /* AWS Dark Blue */
+  --ifm-navbar-link-color: #ffffff;
+  --ifm-footer-background-color: #232f3e;
 }
 
-/* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #25c2a0;
-  --ifm-color-primary-dark: #21af90;
-  --ifm-color-primary-darker: #1fa588;
-  --ifm-color-primary-darkest: #1a8870;
-  --ifm-color-primary-light: #29d5b0;
-  --ifm-color-primary-lighter: #32d8b4;
-  --ifm-color-primary-lightest: #4fddbf;
+  --ifm-color-primary: #ff9900;
+  --ifm-color-primary-dark: #e68a00;
+  --ifm-color-primary-darker: #d98200;
+  --ifm-color-primary-darkest: #b36b00;
+  --ifm-color-primary-light: #ffad33;
+  --ifm-color-primary-lighter: #ffb84d;
+  --ifm-color-primary-lightest: #ffd699;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+  
+  --ifm-background-color: #0f172a; /* Sleek dark blue/black */
+  --ifm-navbar-background-color: #1a222e;
+}
+
+.navbar {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-bottom: 2px solid var(--ifm-color-primary);
+}
+
+.hero--primary {
+  background: linear-gradient(135deg, #232f3e 0%, #0f172a 100%);
+  color: white;
 }

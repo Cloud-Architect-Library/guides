@@ -2,46 +2,25 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Introducción
 
-Let's discover **Docusaurus in less than 5 minutes**.
+Bienvenido a la **Cloud Architect Library**. Esta biblioteca está diseñada para recopilar mejores prácticas, patrones de diseño y guías detalladas sobre arquitectura en la nube, con un enfoque inicial en **Amazon Web Services (AWS)**.
 
-## Getting Started
+## ¿Qué encontrarás aquí?
 
-Get started by **creating a new site**.
+En esta documentación, exploraremos los servicios fundamentales de AWS siguiendo los pilares del **AWS Well-Architected Framework**:
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+- **Computación**: EC2, Lambda, EKS y estrategias de escalado.
+- **Seguridad**: Gestión de identidades (IAM), cifrado (KMS) y protección de red.
+- **Networking**: Diseño de VPCs, conectividad híbrida y entrega de contenido.
 
-### What you'll need
+## Cómo usar esta librería
 
-- [Node.js](https://nodejs.org/en/download/) version 20.0 or above:
-  - When installing Node.js, you are recommended to check all checkboxes related to dependencies.
+Navega a través de la barra lateral para explorar las distintas categorías. Cada sección incluye:
+1. Conceptos fundamentales.
+2. Casos de uso comunes.
+3. Recomendaciones de arquitectura.
+4. Enlaces a la documentación oficial.
 
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**.
-
-The classic template will automatically be added to your project after you run the command:
-
-```bash
-npm init docusaurus@latest my-website classic
-```
-
-You can type this command into Command Prompt, Powershell, Terminal, or any other integrated terminal of your code editor.
-
-The command also installs all necessary dependencies you need to run Docusaurus.
-
-## Start your site
-
-Run the development server:
-
-```bash
-cd my-website
-npm run start
-```
-
-The `cd` command changes the directory you're working with. In order to work with your newly created Docusaurus site, you'll need to navigate the terminal there.
-
-The `npm run start` command builds your website locally and serves it through a development server, ready for you to view at http://localhost:3000/.
-
-Open `docs/intro.md` (this page) and edit some lines: the site **reloads automatically** and displays your changes.
+---
+*Esta librería es mantenida por la comunidad de Cloud Architects.*
