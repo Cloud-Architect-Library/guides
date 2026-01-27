@@ -1,9 +1,12 @@
 ---
-sidebar_label: "Guía de Seguridad AWS"
-sidebar_position: 2
+sidebar_label: "Starter Kit - Primeros Pasos"
+sidebar_position: 1
 ---
 
-# 🔐 Guía de Seguridad AWS - Primeros Pasos
+# 🛟 Guía de Seguridad AWS - Primeros Pasos
+
+![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
+
 
 ## 📋 Introducción
 
@@ -488,7 +491,7 @@ Organización
 
 ---
 
-## 📞 Soporte y Asistencia
+## 🤖 Implementación
 
 Si necesita ayuda con la implementación de estas mejores prácticas, nuestro equipo técnico está disponible para:
 
@@ -498,7 +501,6 @@ Si necesita ayuda con la implementación de estas mejores prácticas, nuestro eq
 - Auditoría y remediación de hallazgos
 - Capacitación de su equipo
 
-**Contacto**: [Información de contacto]
 
 ---
 
@@ -534,9 +536,8 @@ Esta guía proporciona las bases para una cuenta AWS segura. La seguridad es un 
 ---
 
 **Versión**: 1.0  
-**Fecha**: Enero 2026  
-**Próxima revisión**: Julio 2026
+**Fecha**: Enero 2026
 
 ---
 
-*Este documento es una guía de referencia. Para implementación técnica detallada, consulte con nuestro equipo de arquitectura.*
+*Este documento es una guía de referencia. Para implementación técnica detallada, consulte con nuestro equipo de arquitectos.*
