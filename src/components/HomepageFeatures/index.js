@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: 'Mejores Prácticas',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    img: '/img/best-practices.png',
     description: (
       <>
         Guías alineadas con el AWS Well-Architected Framework para garantizar
@@ -15,7 +15,7 @@ const FeatureList = [
   },
   {
     title: 'Arquitecturas de Referencia',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    img: '/img/architecture.png',
     description: (
       <>
         Patrones de diseño probados para escalabilidad, alta disponibilidad
@@ -25,7 +25,7 @@ const FeatureList = [
   },
   {
     title: 'Infraestructura como Código',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    img: '/img/iac.png',
     description: (
       <>
         Ejemplos prácticos y fragmentos de código para Terraform, AWS CDK
@@ -35,11 +35,11 @@ const FeatureList = [
   },
 ];
 
-function Feature({ Svg, title, description }) {
+function Feature({ img, title, description }) {
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        <img src={img} className={styles.featureSvg} alt={title} />
       </div>
       <div className="text--center padding-horiz--md">
         <Heading as="h3">{title}</Heading>
