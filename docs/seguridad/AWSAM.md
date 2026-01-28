@@ -1,6 +1,8 @@
 ---
 sidebar_position: 2
 ---
+<div align="center">
+
 # 🔐 AWSAM - AWS Access Monitor
 
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
@@ -9,6 +11,8 @@ sidebar_position: 2
 [![Status](https://img.shields.io/badge/Status-Active-success)](https://github.com)
 
 > Sistema automatizado de monitoreo y notificación en tiempo real de actividad de usuarios IAM en AWS.
+
+</div>
 
 ## 📖 Descripción
 

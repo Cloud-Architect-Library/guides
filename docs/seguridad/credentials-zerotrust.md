@@ -1,9 +1,11 @@
 ---
 sidebar_position: 3
 ---
+<div align="center">
+
 # 🔐 AWS Credentials Zero Trust
 
-<div align="center">
+
 
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 ![Security](https://img.shields.io/badge/Security-Zero%20Trust-green?style=for-the-badge)
@@ -14,7 +16,7 @@ sidebar_position: 3
 
 </div>
 
-## ¿Qué es esto?
+## 📖 Descripción
 
 Un sistema de **credenciales temporales** para AWS que implementa principios **Zero Trust**, eliminando el uso de access keys permanentes con permisos amplios y añadiendo **autenticación multifactor (MFA)** recomendada y obligatoria.
 

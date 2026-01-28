@@ -2,11 +2,13 @@
 sidebar_label: "Starter Kit - Primeros Pasos"
 sidebar_position: 1
 ---
+<div align="center">
 
 # 🛟 Guía de Seguridad AWS - Primeros Pasos
 
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 
+</div>
 
 ## 📋 Introducción
 
