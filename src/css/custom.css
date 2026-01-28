@@ -1,12 +1,10 @@
-/**
- * Any CSS included here will be global. The classic template
- * bundles Infima by default. Infima is a CSS framework designed to
- * work well for content-centric websites.
- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Outfit:wght@400;700&display=swap');
 
-/* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #eb5f07; /* AWS Orange */
+  --ifm-font-family-base: 'Inter', sans-serif;
+  --ifm-heading-font-family: 'Outfit', sans-serif;
+  --ifm-color-primary: #eb5f07;
+  /* AWS Orange */
   --ifm-color-primary-dark: #d45606;
   --ifm-color-primary-darker: #c85106;
   --ifm-color-primary-darkest: #a54305;
@@ -15,10 +13,11 @@
   --ifm-color-primary-lightest: #f8b386;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  
+
   /* Premium touches */
   --ifm-background-color: #f8f9fa;
-  --ifm-navbar-background-color: #232f3e; /* AWS Dark Blue */
+  --ifm-navbar-background-color: #232f3e;
+  /* AWS Dark Blue */
   --ifm-navbar-link-color: #ffffff;
   --ifm-footer-background-color: #232f3e;
 }
@@ -32,17 +31,44 @@
   --ifm-color-primary-lighter: #ffb84d;
   --ifm-color-primary-lightest: #ffd699;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-  
-  --ifm-background-color: #0f172a; /* Sleek dark blue/black */
+
+  --ifm-background-color: #0f172a;
+  /* Sleek dark blue/black */
   --ifm-navbar-background-color: #1a222e;
 }
 
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
 .navbar {
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   border-bottom: 2px solid var(--ifm-color-primary);
 }
 
 .hero--primary {
   background: linear-gradient(135deg, #232f3e 0%, #0f172a 100%);
   color: white;
+  padding: 6rem 0 !important;
+}
+
+.hero__subtitle {
+  max-width: 800px;
+  margin: 1.5rem auto !important;
+  font-weight: 400;
+  line-height: 1.6;
+  opacity: 0.9;
 }

@@ -11,7 +11,7 @@ function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className="container">
+      <div className="container fade-in">
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
         </Heading>
@@ -33,9 +33,10 @@ export default function Home() {
   return (
     <Layout
       title={`Inicio | ${siteConfig.title}`}
-      description="Biblioteca técnica de arquitectura cloud y mejores prácticas en AWS">
+      // turbo
+      description="Explora el repositorio técnico de AWS Solution Architects: Patrones de diseño e implementaciones reales para el éxito de tu proyecto cloud.">
       <HomepageHeader />
-      <main>
+      <main className="fade-in">
         <HomepageFeatures />
       </main>
     </Layout>

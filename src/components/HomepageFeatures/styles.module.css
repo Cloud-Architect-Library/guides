@@ -1,11 +1,31 @@
 .features {
   display: flex;
   align-items: center;
-  padding: 2rem 0;
+  padding: 4rem 0;
   width: 100%;
 }
 
 .featureSvg {
-  height: 200px;
-  width: 200px;
+  height: 180px;
+  width: auto;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.1));
+}
+
+.featureSvg:hover {
+  transform: scale(1.08) translateY(-10px);
+}
+
+.featureCard {
+  background: var(--ifm-card-background-color);
+  padding: 2rem;
+  border-radius: 16px;
+  height: 100%;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.featureCard:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
 }

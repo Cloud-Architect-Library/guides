@@ -9,7 +9,7 @@ const FeatureList = [
     img: 'img/best-practices.png',
     description: (
       <>
-        Guías alineadas con el AWS Well-Architected Framework para garantizar
+        Servicios alineados con el AWS Well-Architected Framework para garantizar
         soluciones eficientes y seguras.
       </>
     ),
@@ -20,7 +20,7 @@ const FeatureList = [
     description: (
       <>
         Patrones de diseño probados para escalabilidad, alta disponibilidad
-        y optimización de costes.
+        y optimización de costes, listos para implementar en tus proyectos.
       </>
     ),
   },
@@ -29,8 +29,8 @@ const FeatureList = [
     img: 'img/iac.png',
     description: (
       <>
-        Ejemplos prácticos y fragmentos de código para Terraform, AWS CDK
-        y CloudFormation.
+        Nuestras implementaciones son soluciones IaC y podemos desplegarlas con
+        Terraform, AWS CDK y CloudFormation.
       </>
     ),
   },
@@ -39,12 +39,14 @@ const FeatureList = [
 function Feature({ img, title, description }) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <img src={useBaseUrl(img)} className={styles.featureSvg} alt={title} />
-      </div>
-      <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+      <div className={styles.featureCard}>
+        <div className="text--center">
+          <img src={useBaseUrl(img)} className={styles.featureSvg} alt={title} />
+        </div>
+        <div className="text--center padding-horiz--md">
+          <Heading as="h3" style={{ marginTop: '1.5rem' }}>{title}</Heading>
+          <p>{description}</p>
+        </div>
       </div>
     </div>
   );

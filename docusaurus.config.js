@@ -4,7 +4,7 @@ import { themes as prismThemes } from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Cloud Architect Library',
-  tagline: 'Documentación Técnica y Buenas Prácticas',
+  tagline: 'Nuestra visión de la nube en acción: Un repositorio de capacidades técnicas y arquitecturas de excelencia diseñadas por el equipo de AWS Solution Architects para garantizar el éxito y la seguridad de cada proyecto.',
   favicon: 'img/favicon.png',
 
   future: {
