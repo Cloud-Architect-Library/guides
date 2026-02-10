@@ -117,6 +117,9 @@ Para que SSM funcione completamente en una red privada, necesitas **tres Interfa
 
 ### Diagrama Detallado
 
+<details>
+<summary>💡 Ver ejemplo completo</summary>
+
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │                         AWS CLOUD                                    │
@@ -167,6 +170,8 @@ Para que SSM funcione completamente en una red privada, necesitas **tres Interfa
         └─────────────────┘                                          │
 ```
 
+</details>
+
 ### Componentes de Red
 
 #### Subred Pública
@@ -186,6 +191,9 @@ Para que SSM funcione completamente en una red privada, necesitas **tres Interfa
 ## Flujo de Comunicación
 
 ### 1. Inicio de Sesión SSM
+
+<details>
+<summary>💡 Ver ejemplo completo</summary>
 
 ```
 ┌─────────────┐
@@ -227,6 +235,8 @@ Para que SSM funcione completamente en una red privada, necesitas **tres Interfa
 │  - Shell interactivo        │
 └─────────────────────────────┘
 ```
+
+</details>
 
 ### 2. Comunicación del SSM Agent
 

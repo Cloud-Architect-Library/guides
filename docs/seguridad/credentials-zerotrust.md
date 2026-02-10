@@ -45,6 +45,9 @@ Esta implementación va dirigida a los usuarios que trabajan con entornos de AWS
 
 ## 🏗️ Arquitectura
 
+<details>
+<summary>💡 Ver ejemplo completo</summary>
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                  Contenedor Local                       │
@@ -78,6 +81,8 @@ Esta implementación va dirigida a los usuarios que trabajan con entornos de AWS
 │  └──────────────────┘      └──────────────────────┘     │
 └─────────────────────────────────────────────────────────┘
 ```
+
+</details>
 ### 🔐 Seguridad Avanzada
 - **MFA Obligatorio**: Autenticación de dos factores para todos los roles
 - **Credenciales Temporales**: Expiran automáticamente (4-12 horas)

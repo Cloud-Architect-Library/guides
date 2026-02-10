@@ -64,6 +64,9 @@ AWS Secrets Manager es un servicio que permite **almacenar, rotar y gestionar cr
 
 ### Arquitectura de la Solución
 
+<details>
+<summary>💡 Ver ejemplo completo</summary>
+
 ```
 ┌─────────────────────────────────────────────────────────┐
 │                      VPC: 10.0.0.0/16                   │
@@ -99,6 +102,8 @@ AWS Secrets Manager es un servicio que permite **almacenar, rotar y gestionar cr
     └───────────────────┘
 ```
 
+</details>
+
 ### Flujo de Conexión
 
 1. **EC2 solicita** el secreto a Secrets Manager usando IAM Role
@@ -128,6 +133,9 @@ AWS Secrets Manager es un servicio que permite **almacenar, rotar y gestionar cr
    - Security group: `rds-sg`
 
 #### Opción B: Usando AWS CLI
+
+<details>
+<summary>⚙️ Ver comandos / Script</summary>
 
 ```bash
 # Crear el secreto primero
@@ -166,7 +174,12 @@ aws rds create-db-instance \
   --tags Key=Environment,Value=production Key=Application,Value=webapp
 ```
 
+</details>
+
 #### Opción C: Usando Terraform
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # secrets.tf
@@ -237,11 +250,16 @@ resource "aws_db_instance" "main" {
 }
 ```
 
+</details>
+
 📚 [RDS with Secrets Manager](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html)
 
 ---
 
 ### Paso 2: Configurar Security Groups
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Security Group para RDS
@@ -291,9 +309,14 @@ resource "aws_security_group" "ec2_app" {
 }
 ```
 
+</details>
+
 ---
 
 ### Paso 3: Crear IAM Role para EC2
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # IAM Role para EC2
@@ -356,7 +379,12 @@ resource "aws_iam_instance_profile" "ec2_app" {
 }
 ```
 
+</details>
+
 #### Política IAM con Restricciones Adicionales
+
+<details>
+<summary>📋 Ver configuración JSON</summary>
 
 ```json
 {
@@ -398,11 +426,16 @@ resource "aws_iam_instance_profile" "ec2_app" {
 }
 ```
 
+</details>
+
 📚 [IAM Policies for Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access.html)
 
 ---
 
 ### Paso 4: Lanzar Instancia EC2
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Launch Template para EC2
@@ -472,11 +505,16 @@ resource "aws_autoscaling_group" "app" {
 }
 ```
 
+</details>
+
 ---
 
 ### Paso 5: Código de Aplicación en EC2
 
 #### Python (Boto3)
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 #!/usr/bin/env python3
@@ -608,7 +646,12 @@ if __name__ == "__main__":
     main()
 ```
 
+</details>
+
 #### Node.js
+
+<details>
+<summary>💡 Ver ejemplo completo</summary>
 
 ```javascript
 /**
@@ -733,7 +776,12 @@ async function main() {
 main().catch(console.error);
 ```
 
+</details>
+
 #### Java (Spring Boot)
+
+<details>
+<summary>💡 Ver ejemplo completo</summary>
 
 ```java
 package com.example.app.config;
@@ -838,6 +886,8 @@ public class DatabaseConfig {
     }
 }
 ```
+
+</details>
 
 ```properties
 # application.properties
@@ -959,6 +1009,9 @@ aws secretsmanager update-secret \
 - ⚠️ Más complejo de configurar
 
 ### Función Lambda de Rotación Personalizada
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -1143,7 +1196,12 @@ def get_secret_dict(service_client, arn, stage, token=None):
     return secret_dict
 ```
 
+</details>
+
 ### IAM Role para Lambda de Rotación
+
+<details>
+<summary>📋 Ver configuración JSON</summary>
 
 ```json
 {
@@ -1187,6 +1245,8 @@ def get_secret_dict(service_client, arn, stage, token=None):
   ]
 }
 ```
+
+</details>
 
 📚 [Rotating Secrets](https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html)
 
@@ -1276,6 +1336,9 @@ admin:SecurePassword123!@prod-mysql-db.cluster-xxxxx.us-east-1.rds.amazonaws.com
 
 #### 1. Cifrado con KMS
 
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
+
 ```hcl
 # Crear KMS key dedicada para Secrets Manager
 resource "aws_kms_key" "secrets" {
@@ -1349,6 +1412,8 @@ resource "aws_secretsmanager_secret" "db_credentials" {
 }
 ```
 
+</details>
+
 #### 2. Políticas de Recursos
 
 ```json
@@ -1386,6 +1451,9 @@ resource "aws_secretsmanager_secret" "db_credentials" {
 
 #### 3. VPC Endpoints
 
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
+
 ```hcl
 # VPC Endpoint para Secrets Manager
 resource "aws_vpc_endpoint" "secretsmanager" {
@@ -1422,6 +1490,8 @@ resource "aws_security_group" "vpc_endpoints" {
 }
 ```
 
+</details>
+
 **Beneficios de VPC Endpoints:**
 - 🔒 Tráfico no sale de la VPC
 - 💰 Reduce costos de transferencia de datos
@@ -1455,6 +1525,9 @@ resource "aws_cloudwatch_metric_alarm" "unauthorized_access" {
 ```
 
 #### 2. CloudTrail Monitoring
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -1524,6 +1597,8 @@ def lambda_handler(event, context):
     }
 ```
 
+</details>
+
 #### 3. EventBridge Rules
 
 ```hcl
@@ -1555,6 +1630,9 @@ resource "aws_cloudwatch_event_target" "lambda" {
 ```
 
 #### 4. Dashboard de CloudWatch
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -1611,6 +1689,8 @@ response = cloudwatch.put_dashboard(
 print(f"Dashboard creado: {response['DashboardValidationMessages']}")
 ```
 
+</details>
+
 📚 [Monitoring Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/monitoring.html)
 
 ---
@@ -1640,6 +1720,9 @@ def handle_request():
 ```
 
 **✅ Con caché - Optimizado:**
+<details>
+<summary>🐍 Ver script completo de Python</summary>
+
 ```python
 import time
 from functools import lru_cache
@@ -1675,6 +1758,8 @@ def handle_request():
     connection = connect_db(secret)
     # ... proceso
 ```
+
+</details>
 
 #### 2. AWS Secrets Manager Caching Library
 
@@ -1768,6 +1853,9 @@ Parameter Store (configuración):
 
 ### Calculadora de Costos
 
+<details>
+<summary>🐍 Ver script completo de Python</summary>
+
 ```python
 def calculate_secrets_manager_cost(
     num_secrets,
@@ -1826,6 +1914,8 @@ Desglose de Costos Mensuales:
 # - Réplicas: $4.00
 # - TOTAL: $13.00
 ```
+
+</details>
 
 ---
 
@@ -1972,6 +2062,9 @@ aws lambda get-function-configuration \
 
 ### Script de Diagnóstico
 
+<details>
+<summary>⚙️ Ver comandos / Script</summary>
+
 ```bash
 #!/bin/bash
 # Script de diagnóstico para Secrets Manager
@@ -2034,6 +2127,8 @@ echo ""
 echo "=== Diagnóstico completado ==="
 ```
 
+</details>
+
 📚 [Troubleshooting Secrets Manager](https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html)
 
 ---
@@ -2066,6 +2161,9 @@ resource "aws_secretsmanager_secret" "db_credentials" {
   }
 }
 ```
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -2106,9 +2204,14 @@ except Exception as e:
     print(f"Error fatal: {e}")
 ```
 
+</details>
+
 ---
 
 ### Secretos para Múltiples Entornos
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -2167,11 +2270,16 @@ stripe_key = secrets.get_api_key('stripe')
 redis_creds = secrets.get_cache_credentials('redis')
 ```
 
+</details>
+
 ---
 
 ### Integración con CI/CD
 
 #### GitHub Actions
+
+<details>
+<summary>📝 Ver configuración YAML</summary>
 
 ```yaml
 name: Deploy Application
@@ -2221,6 +2329,8 @@ jobs:
           ./run-migrations.sh
 ```
 
+</details>
+
 #### GitLab CI
 
 ```yaml
@@ -2259,6 +2369,9 @@ deploy:
 
 #### Amazon ECS
 
+<details>
+<summary>📋 Ver configuración JSON</summary>
+
 ```json
 {
   "family": "app-task",
@@ -2295,7 +2408,12 @@ deploy:
 }
 ```
 
+</details>
+
 #### Amazon EKS (Kubernetes)
+
+<details>
+<summary>📝 Ver configuración YAML</summary>
 
 ```yaml
 # secrets-store-csi-driver con AWS provider
@@ -2359,9 +2477,14 @@ spec:
           secretProviderClass: "aws-secrets"
 ```
 
+</details>
+
 ---
 
 ### Secretos para Lambda
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -2407,6 +2530,11 @@ def lambda_handler(event, context):
     finally:
         connection.close()
 ```
+
+</details>
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Terraform: Lambda con acceso a Secrets Manager
@@ -2456,6 +2584,8 @@ resource "aws_iam_role_policy" "lambda_secrets" {
   })
 }
 ```
+
+</details>
 
 📚 [Using Secrets Manager with Lambda](https://docs.aws.amazon.com/secretsmanager/latest/userguide/retrieving-secrets_lambda.html)
 
@@ -2641,6 +2771,9 @@ Esta guía proporciona una implementación completa de AWS Secrets Manager para 
 
 ### Arquitectura Final
 
+<details>
+<summary>💡 Ver ejemplo completo</summary>
+
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                         AWS Account                              │
@@ -2708,6 +2841,8 @@ Esta guía proporciona una implementación completa de AWS Secrets Manager para 
 │                                                               │
 └───────────────────────────────────────────────────────────────┘
 ```
+
+</details>
 
 Este ejemplo completo demuestra una arquitectura segura y escalable usando AWS Secrets Manager para gestionar credenciales entre EC2 y RDS.
 

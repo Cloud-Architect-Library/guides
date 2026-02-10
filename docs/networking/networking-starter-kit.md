@@ -24,6 +24,9 @@ Este Starter Kit proporciona las **mejores prácticas de networking en AWS** par
 
 ### Arquitectura de Referencia
 
+<details>
+<summary>💡 Ver ejemplo completo</summary>
+
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                    VPC: 10.0.0.0/16                             │
@@ -76,6 +79,8 @@ Este Starter Kit proporciona las **mejores prácticas de networking en AWS** par
 │                                                                 │
 └─────────────────────────────────────────────────────────────────┘
 ```
+
+</details>
 
 ### Principios de Diseño
 
@@ -227,6 +232,9 @@ VPC Shared Services:  10.3.0.0/16
 
 ### Zonas Privadas Hospedadas
 
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
+
 ```hcl
 # Zona privada para resolución interna
 resource "aws_route53_zone" "private" {
@@ -273,9 +281,14 @@ resource "aws_route53_record" "internal_api" {
 }
 ```
 
+</details>
+
 ---
 
 ### Route 53 Resolver (DNS Híbrido)
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Resolver Endpoint para consultas desde on-premise
@@ -392,6 +405,8 @@ resource "aws_security_group" "dns_resolver" {
 }
 ```
 
+</details>
+
 📚 [Route 53 Resolver](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html)
 
 ---
@@ -399,6 +414,9 @@ resource "aws_security_group" "dns_resolver" {
 ## 6️⃣ Monitoreo y Observabilidad
 
 ### VPC Flow Logs Avanzados
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Flow Logs a S3 (más económico para retención larga)
@@ -481,9 +499,14 @@ resource "aws_s3_bucket_policy" "flow_logs" {
 }
 ```
 
+</details>
+
 ---
 
 ### CloudWatch Alarms para Networking
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Alarma: NAT Gateway con alto uso de ancho de banda
@@ -576,9 +599,14 @@ resource "aws_sns_topic_subscription" "alerts_email" {
 }
 ```
 
+</details>
+
 ---
 
 ### Network Insights
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Network Insights Path para validar conectividad
@@ -644,6 +672,8 @@ resource "aws_lambda_permission" "allow_eventbridge" {
 }
 ```
 
+</details>
+
 📚 [VPC Flow Logs](https://docs.aws.amazon.com/vpc/latest/userguide/flow-logs.html)
 
 ---
@@ -679,6 +709,9 @@ resource "aws_cloudwatch_metric_alarm" "nat_gateway_error_port_allocation" {
 ---
 
 ### Transit Gateway para Escalabilidad
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Transit Gateway para conectar múltiples VPCs
@@ -734,9 +767,14 @@ resource "aws_cloudwatch_log_group" "tgw_flow_logs" {
 }
 ```
 
+</details>
+
 ---
 
 ### IPv6 Support (Opcional)
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Habilitar IPv6 en VPC
@@ -779,6 +817,8 @@ resource "aws_route" "private_ipv6" {
 }
 ```
 
+</details>
+
 📚 [High Availability](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-basics)
 
 ---
@@ -786,6 +826,9 @@ resource "aws_route" "private_ipv6" {
 ## 8️⃣ Optimización de Costos
 
 ### Análisis de Costos de Networking
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -877,11 +920,16 @@ def analyze_networking_costs():
 analyze_networking_costs()
 ```
 
+</details>
+
 ---
 
 ### Estrategias de Optimización
 
 #### 1. VPC Endpoints vs NAT Gateway
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -926,6 +974,8 @@ def calculate_vpc_endpoint_savings(monthly_data_gb):
 # Ejemplo: 1 TB de transferencia a S3/DynamoDB
 calculate_vpc_endpoint_savings(1000)
 ```
+
+</details>
 
 ---
 
@@ -1198,6 +1248,9 @@ aws ec2 describe-instance-attribute \
 
 **Análisis:**
 
+<details>
+<summary>🐍 Ver script completo de Python</summary>
+
 ```python
 """
 Identificar fuentes de alto costo de transferencia
@@ -1240,6 +1293,8 @@ def analyze_nat_gateway_traffic():
 
 analyze_nat_gateway_traffic()
 ```
+
+</details>
 
 **Soluciones:**
 - Implementar VPC Endpoints para servicios AWS

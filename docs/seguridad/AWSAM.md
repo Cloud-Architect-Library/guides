@@ -33,6 +33,9 @@ sidebar_position: 2
 
 ## 🏗️ Arquitectura
 
+<details>
+<summary>💡 Ver ejemplo completo</summary>
+
 ```
             ┌─────────────────┐
             │  Usuario IAM    │
@@ -69,6 +72,8 @@ sidebar_position: 2
          │  📧 Email       │
          └─────────────────┘
 ```
+
+</details>
 
 ## 🚀 Inicio
 

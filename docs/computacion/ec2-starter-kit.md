@@ -333,6 +333,9 @@ aws ec2 copy-snapshot \
     }]
   }
 }
+<details>
+<summary>💡 Ver ejemplo completo</summary>
+
 ```
 
 📚 [Amazon Data Lifecycle Manager](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/snapshot-lifecycle.html)
@@ -370,6 +373,8 @@ aws ec2 copy-snapshot \
 #### 3. Gestión del Ciclo de Vida
 
 ```
+
+</details>
 Crear AMI Base → Hardening → Escaneo → Aprobación → Distribución → Deprecación
 ```
 
@@ -772,6 +777,9 @@ EOF
 
 systemctl enable fail2ban
 systemctl start fail2ban
+<details>
+<summary>💡 Ver ejemplo completo</summary>
+
 ```
 
 📚 [CIS Benchmarks](https://www.cisecurity.org/cis-benchmarks/)
@@ -816,7 +824,9 @@ systemctl start fail2ban
 
 #### Ejemplo: Plan de Backup con AWS Backup
 
-```json
+```
+
+</details>json
 {
   "BackupPlanName": "EC2-Production-Backup",
   "Rules": [{
@@ -834,6 +844,9 @@ systemctl start fail2ban
     }]
   }]
 }
+<details>
+<summary>💡 Ver ejemplo completo</summary>
+
 ```
 
 📚 [AWS Backup Documentation](https://docs.aws.amazon.com/aws-backup/)
@@ -894,7 +907,9 @@ systemctl start fail2ban
 
 #### Implementación
 
-```bash
+```
+
+</details>bash
 # Habilitar AWS Config
 aws configservice put-configuration-recorder \
   --configuration-recorder name=default,roleARN=arn:aws:iam::123456789012:role/config-role \
@@ -1033,6 +1048,9 @@ aws ec2 create-tags \
     }
   }]
 }
+<details>
+<summary>💡 Ver ejemplo completo</summary>
+
 ```
 
 📚 [Service Control Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps.html)
@@ -1071,7 +1089,9 @@ aws ec2 create-tags \
 
 #### Ejemplo: Escanear con Checkov
 
-```bash
+```
+
+</details>bash
 # Instalar Checkov
 pip install checkov
 

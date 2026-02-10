@@ -523,6 +523,9 @@ provider "aws" {
 
 #### Tags en Recursos Específicos
 
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
+
 ```hcl
 # EC2 Instance
 resource "aws_instance" "web" {
@@ -590,6 +593,8 @@ resource "aws_vpc" "main" {
 }
 ```
 
+</details>
+
 #### Tags Dinámicos
 
 ```hcl
@@ -619,6 +624,9 @@ resource "aws_instance" "app" {
 ---
 
 ### CloudFormation
+
+<details>
+<summary>📝 Ver configuración YAML</summary>
 
 ```yaml
 AWSTemplateFormatVersion: '2010-09-09'
@@ -686,9 +694,14 @@ Resources:
           Value: daily
 ```
 
+</details>
+
 ---
 
 ### AWS CDK (Python)
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 from aws_cdk import (
@@ -741,6 +754,8 @@ class InfrastructureStack(Stack):
         Tags.of(bucket).add("DataClassification", "internal")
 ```
 
+</details>
+
 📚 [Terraform AWS Provider - Tags](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/guides/resource-tagging)
 
 ---
@@ -758,6 +773,9 @@ Las Tag Policies permiten **estandarizar tags** en toda la organización, defini
 - Capitalización
 
 #### Ejemplo de Tag Policy
+
+<details>
+<summary>📋 Ver configuración JSON</summary>
 
 ```json
 {
@@ -824,6 +842,8 @@ Las Tag Policies permiten **estandarizar tags** en toda la organización, defini
 }
 ```
 
+</details>
+
 #### Aplicar Tag Policy
 
 ```bash
@@ -845,6 +865,9 @@ aws organizations attach-policy \
 ### Service Control Policies (SCPs)
 
 **Forzar tags en la creación de recursos:**
+
+<details>
+<summary>📋 Ver configuración JSON</summary>
 
 ```json
 {
@@ -904,9 +927,14 @@ aws organizations attach-policy \
 }
 ```
 
+</details>
+
 ---
 
 ### Lambda para Auto-Tagging
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -1015,6 +1043,8 @@ def handle_s3_bucket(detail, auto_tags):
         print(f"Error aplicando tags a S3: {str(e)}")
 ```
 
+</details>
+
 #### EventBridge Rule para Lambda
 
 ```json
@@ -1034,6 +1064,9 @@ def handle_s3_bucket(detail, auto_tags):
 ---
 
 ### AWS Config Rules para Validación
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -1097,6 +1130,8 @@ def lambda_handler(event, context):
     }
 ```
 
+</details>
+
 📚 [AWS Config Rules](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)
 
 ---
@@ -1130,6 +1165,9 @@ aws ce update-cost-allocation-tags-status \
 ### Cost Explorer con Tags
 
 #### Filtrar Costos por Tag
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -1178,7 +1216,12 @@ for result in costs:
         print(f"  {tag_value}: ${float(amount):.2f}")
 ```
 
+</details>
+
 #### Reporte de Costos por Múltiples Tags
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -1271,9 +1314,14 @@ df.to_csv('cost_report.csv', index=False)
 print("\nReporte exportado a cost_report.csv")
 ```
 
+</details>
+
 ---
 
 ### Presupuestos con Tags
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -1367,11 +1415,16 @@ create_budget_by_tag(
 )
 ```
 
+</details>
+
 ---
 
 ### Optimización de Costos
 
 #### Identificar Recursos Sin Tags
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -1452,7 +1505,12 @@ check_rds_instances()
 check_s3_buckets()
 ```
 
+</details>
+
 #### Recursos No Utilizados por Tag
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -1534,6 +1592,8 @@ if idle:
     print("- Contactar a los owners para validar si son necesarias")
     print("- Evaluar cambio a instancias más pequeñas")
 ```
+
+</details>
 
 📚 [Cost Allocation Tags](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
 
@@ -1627,6 +1687,9 @@ if idle:
 
 **Permitir acceso solo a recursos del mismo proyecto:**
 
+<details>
+<summary>📋 Ver configuración JSON</summary>
+
 ```json
 {
   "Version": "2012-10-17",
@@ -1664,9 +1727,14 @@ if idle:
 }
 ```
 
+</details>
+
 ---
 
 #### 4. Política Combinada (Multi-Atributo)
+
+<details>
+<summary>📋 Ver configuración JSON</summary>
 
 ```json
 {
@@ -1709,6 +1777,8 @@ if idle:
 }
 ```
 
+</details>
+
 ---
 
 ### Asignar Tags a Usuarios IAM
@@ -1730,6 +1800,9 @@ aws iam tag-role \
     Key=Environment,Value=development \
     Key=Owner,Value=team-backend
 ```
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Terraform: Usuario con tags
@@ -1765,6 +1838,8 @@ resource "aws_iam_role" "developer" {
   }
 }
 ```
+
+</details>
 
 📚 [ABAC for AWS](https://docs.aws.amazon.com/IAM/latest/UserGuide/introduction_attribute-based-access-control.html)
 
@@ -1847,6 +1922,9 @@ done
 ---
 
 ### Reporte de Compliance
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -1956,9 +2034,14 @@ def generate_compliance_report():
 generate_compliance_report()
 ```
 
+</details>
+
 ---
 
 ### Dashboard de Compliance
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -2013,6 +2096,8 @@ response = cloudwatch.put_dashboard(
 print("Dashboard creado exitosamente")
 ```
 
+</details>
+
 📚 [AWS Config Compliance](https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)
 
 ---
@@ -2020,6 +2105,9 @@ print("Dashboard creado exitosamente")
 ## 9️⃣ Automatización Avanzada
 
 ### Programación de Encendido/Apagado
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -2121,6 +2209,8 @@ def lambda_handler(event, context):
     }
 ```
 
+</details>
+
 #### EventBridge Rules para Programación
 
 ```json
@@ -2154,6 +2244,9 @@ def lambda_handler(event, context):
 ---
 
 ### Backup Automático por Tags
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -2271,9 +2364,14 @@ def cleanup_old_snapshots():
             print(f"Snapshot eliminado: {snapshot_id} (edad: {age_days} días)")
 ```
 
+</details>
+
 ---
 
 ### Notificaciones por Tags
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -2347,9 +2445,14 @@ Por favor, verifica que la instancia tenga todos los tags obligatorios.
     }
 ```
 
+</details>
+
 ---
 
 ### Resource Groups por Tags
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -2440,6 +2543,8 @@ create_resource_group(
     ]
 )
 ```
+
+</details>
 
 📚 [AWS Resource Groups](https://docs.aws.amazon.com/ARG/latest/userguide/resource-groups.html)
 
@@ -2615,6 +2720,9 @@ create_resource_group(
 
 ## 📝 Plantilla de Política de Tagging
 
+<details>
+<summary>💡 Ver ejemplo completo</summary>
+
 ```markdown
 # Política de Tagging - [Nombre de la Organización]
 
@@ -2671,6 +2779,8 @@ Esta política será revisada trimestralmente.
 
 Para preguntas: [email@company.com]
 ```
+
+</details>
 
 ---
 

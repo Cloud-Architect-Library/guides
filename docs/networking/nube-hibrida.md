@@ -38,6 +38,9 @@ La **nube híbrida** permite conectar infraestructura on-premise con servicios e
 
 ### Arquitectura VPN Site-to-Site
 
+<details>
+<summary>💡 Ver ejemplo completo</summary>
+
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                    On-Premise Data Center                    │
@@ -84,6 +87,8 @@ La **nube híbrida** permite conectar infraestructura on-premise con servicios e
 │                                                              │
 └──────────────────────────────────────────────────────────────┘
 ```
+
+</details>
 
 ### Características
 
@@ -174,6 +179,9 @@ aws ec2 create-vpn-connection \
   --tag-specifications 'ResourceType=vpn-connection,Tags=[{Key=Name,Value=onprem-to-aws}]'
 ```
 
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
+
 ```hcl
 # Terraform
 resource "aws_vpn_connection" "main" {
@@ -208,6 +216,8 @@ resource "aws_vpn_connection" "main" {
   }
 }
 ```
+
+</details>
 
 ---
 
@@ -250,6 +260,9 @@ aws ec2 describe-vpn-connections \
 ```
 
 **Ejemplo de configuración para Cisco ASA:**
+
+<details>
+<summary>🔧 Ver configuración de dispositivo</summary>
 
 ```cisco
 ! Tunnel 1
@@ -298,6 +311,8 @@ router bgp 65000
   network 10.1.0.0 mask 255.255.0.0
 ```
 
+</details>
+
 **Ejemplo para pfSense:**
 
 ```
@@ -330,6 +345,9 @@ router bgp 65000
 ## 3️⃣ AWS Direct Connect (On-Premise ↔ AWS)
 
 ### Arquitectura Direct Connect
+
+<details>
+<summary>💡 Ver ejemplo completo</summary>
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -383,6 +401,8 @@ router bgp 65000
 │                                                              │
 └──────────────────────────────────────────────────────────────┘
 ```
+
+</details>
 
 ### Características
 
@@ -498,6 +518,9 @@ aws directconnect create-public-virtual-interface \
 
 #### Paso 3: Direct Connect Gateway (Multi-Region)
 
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
+
 ```hcl
 # Direct Connect Gateway para acceso multi-región
 resource "aws_dx_gateway" "main" {
@@ -538,11 +561,16 @@ resource "aws_dx_private_virtual_interface" "to_dxgw" {
 }
 ```
 
+</details>
+
 ---
 
 ### Direct Connect + VPN (Backup)
 
 **Arquitectura de alta disponibilidad:**
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Direct Connect como conexión primaria
@@ -577,6 +605,8 @@ resource "aws_vpn_connection" "backup" {
 # BGP configurado para preferir Direct Connect
 # AS Path Prepending en VPN para menor prioridad
 ```
+
+</details>
 
 📚 [AWS Direct Connect Documentation](https://docs.aws.amazon.com/directconnect/)
 
@@ -626,6 +656,9 @@ resource "aws_vpn_connection" "backup" {
 ---
 
 ### Implementación Transit Gateway
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Transit Gateway
@@ -690,9 +723,14 @@ resource "aws_dx_gateway_association" "tgw" {
 }
 ```
 
+</details>
+
 ---
 
 ### Tablas de Rutas en Transit Gateway
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Tabla de rutas para Producción (aislada)
@@ -742,6 +780,8 @@ resource "aws_ec2_transit_gateway_route" "to_onprem" {
 }
 ```
 
+</details>
+
 📚 [AWS Transit Gateway Documentation](https://docs.aws.amazon.com/vpc/latest/tgw/)
 
 ---
@@ -749,6 +789,9 @@ resource "aws_ec2_transit_gateway_route" "to_onprem" {
 ## 5️⃣ Conectividad AWS ↔ Azure
 
 ### Arquitectura Multi-Cloud (AWS-Azure)
+
+<details>
+<summary>💡 Ver ejemplo completo</summary>
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -802,6 +845,8 @@ resource "aws_ec2_transit_gateway_route" "to_onprem" {
 └────────────────────────────────────────────────────────────┘
 ```
 
+</details>
+
 ### Opciones de Conectividad
 
 | Opción | Latencia | Ancho de Banda | Costo | Complejidad |
@@ -838,6 +883,9 @@ AWS VPC                          Azure VNet
 ---
 
 #### Paso 1: Configurar AWS
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # AWS - Virtual Private Gateway
@@ -886,9 +934,14 @@ resource "aws_vpn_gateway_route_propagation" "to_azure" {
 }
 ```
 
+</details>
+
 ---
 
 #### Paso 2: Configurar Azure
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Azure - Virtual Network
@@ -1031,11 +1084,16 @@ resource "azurerm_virtual_network_gateway_connection" "to_aws_tunnel2" {
 }
 ```
 
+</details>
+
 ---
 
 ### Opción 2: ExpressRoute + Direct Connect
 
 #### Arquitectura con Proveedor de Interconexión
+
+<details>
+<summary>💡 Ver ejemplo completo</summary>
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -1080,6 +1138,8 @@ resource "azurerm_virtual_network_gateway_connection" "to_aws_tunnel2" {
 │                                                              │
 └──────────────────────────────────────────────────────────────┘
 ```
+
+</details>
 
 #### Proveedores de Interconexión
 
@@ -1129,6 +1189,9 @@ resource "azurerm_virtual_network_gateway_connection" "to_aws_tunnel2" {
 
 **Paso 4: Configurar Azure ExpressRoute**
 
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
+
 ```hcl
 # Azure - ExpressRoute Circuit
 resource "azurerm_express_route_circuit" "main" {
@@ -1175,6 +1238,8 @@ resource "azurerm_virtual_network_gateway_connection" "expressroute" {
 }
 ```
 
+</details>
+
 📚 [AWS-Azure Connectivity](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-connectivity-models)
 
 ---
@@ -1184,6 +1249,9 @@ resource "azurerm_virtual_network_gateway_connection" "expressroute" {
 ### Monitoreo de Conexiones
 
 #### CloudWatch Metrics para VPN
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -1252,9 +1320,14 @@ def get_vpn_metrics(vpn_id):
 check_vpn_status()
 ```
 
+</details>
+
 ---
 
 #### Alarmas de CloudWatch
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Alarma: Túnel VPN caído
@@ -1311,6 +1384,8 @@ resource "aws_cloudwatch_metric_alarm" "dx_errors" {
   }
 }
 ```
+
+</details>
 
 ---
 
@@ -1554,6 +1629,9 @@ ping -M do -s 1500 10.0.1.10
 
 ### Dashboard de Monitoreo
 
+<details>
+<summary>🐍 Ver script completo de Python</summary>
+
 ```python
 """
 Crear dashboard de CloudWatch para conectividad híbrida
@@ -1638,6 +1716,8 @@ response = cloudwatch.put_dashboard(
 print("Dashboard creado exitosamente")
 ```
 
+</details>
+
 📚 [VPN Monitoring](https://docs.aws.amazon.com/vpn/latest/s2svpn/monitoring-overview-vpn.html)
 
 ---
@@ -1678,6 +1758,9 @@ resource "aws_vpn_connection" "over_dx" {
 ---
 
 #### 2. Segmentación de Red
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Separar tráfico por función usando VLANs
@@ -1723,11 +1806,16 @@ resource "aws_ec2_transit_gateway_route_table" "dev" {
 }
 ```
 
+</details>
+
 ---
 
 #### 3. Control de Acceso
 
 **Security Groups:**
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Security Group para recursos accesibles desde on-premise
@@ -1768,7 +1856,12 @@ resource "aws_security_group" "hybrid_access" {
 }
 ```
 
+</details>
+
 **Network ACLs:**
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # NACL para subnet con acceso híbrido
@@ -1812,6 +1905,8 @@ resource "aws_network_acl" "hybrid" {
 }
 ```
 
+</details>
+
 ---
 
 #### 4. Autenticación y Autorización
@@ -1852,6 +1947,9 @@ resource "aws_vpc_endpoint" "to_internal_api" {
 ---
 
 #### 5. Logging y Auditoría
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # CloudTrail para auditar cambios en conectividad
@@ -1909,6 +2007,8 @@ resource "aws_guardduty_detector" "main" {
   }
 }
 ```
+
+</details>
 
 ---
 
@@ -1991,6 +2091,9 @@ Ejemplo mensual (3 VPCs + 1 VPN):
 
 #### 1. Usar Direct Connect para Tráfico Alto
 
+<details>
+<summary>🐍 Ver script completo de Python</summary>
+
 ```python
 """
 Calculadora de break-even VPN vs Direct Connect
@@ -2039,6 +2142,8 @@ print("\n=== Escenario 3: Alto tráfico ===")
 calculate_breakeven(10000)  # 10 TB
 ```
 
+</details>
+
 ---
 
 #### 2. Consolidar con Transit Gateway
@@ -2074,6 +2179,9 @@ resource "aws_vpn_connection" "consolidated" {
 ---
 
 #### 3. Programar Conexiones No Críticas
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -2123,9 +2231,14 @@ def lambda_handler(event, context):
     }
 ```
 
+</details>
+
 ---
 
 #### 4. Monitorear y Optimizar Transferencia de Datos
+
+<details>
+<summary>🐍 Ver script completo de Python</summary>
 
 ```python
 """
@@ -2176,6 +2289,8 @@ def analyze_data_transfer():
 analyze_data_transfer()
 ```
 
+</details>
+
 📚 [AWS Pricing Calculator](https://calculator.aws/)
 
 ---
@@ -2190,6 +2305,9 @@ analyze_data_transfer()
 - Mantener conectividad durante transición
 
 **Arquitectura:**
+
+<details>
+<summary>💡 Ver ejemplo completo</summary>
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -2228,7 +2346,12 @@ analyze_data_transfer()
 └──────────────────────────────────────────────────────────────┘
 ```
 
+</details>
+
 **Implementación:**
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # Fase 1: Migrar base de datos
@@ -2280,6 +2403,8 @@ resource "aws_ecs_service" "new_microservice" {
 # Backend on-premise puede acceder a microservicios en AWS
 ```
 
+</details>
+
 ---
 
 ### Caso 2: Disaster Recovery Multi-Cloud
@@ -2290,6 +2415,9 @@ resource "aws_ecs_service" "new_microservice" {
 - Failover automático
 
 **Arquitectura:**
+
+<details>
+<summary>💡 Ver ejemplo completo</summary>
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -2330,7 +2458,12 @@ resource "aws_ecs_service" "new_microservice" {
 └───────────────────────────────────────────────────────────┘
 ```
 
+</details>
+
 **Implementación:**
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # AWS - Primary
@@ -2446,6 +2579,8 @@ resource "aws_route53_record" "failover_secondary" {
 }
 ```
 
+</details>
+
 ---
 
 ### Caso 3: Shared Services Hub
@@ -2487,6 +2622,9 @@ resource "aws_route53_record" "failover_secondary" {
 ```
 
 **Implementación:**
+
+<details>
+<summary>📄 Ver código completo de Terraform</summary>
 
 ```hcl
 # VPC de Shared Services
@@ -2610,6 +2748,8 @@ resource "aws_ram_principal_association" "prod_account" {
   resource_share_arn = aws_ram_resource_share.ad.arn
 }
 ```
+
+</details>
 
 ---
 
