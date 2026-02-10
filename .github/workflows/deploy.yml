@@ -8,8 +8,17 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    
+    # Security: Define explicit permissions following principle of least privilege (CWE-250)
+    permissions:
+      contents: write  # Required for pushing to gh-pages branch
+      pages: write     # Required for GitHub Pages deployment
+      id-token: write  # Required for OIDC authentication
+    
     steps:
-      - uses: actions/checkout@v4
+      # Security: Pin actions to full commit SHA for supply chain security (CWE-829)
+      # actions/checkout@v4.2.2
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
         with:
           fetch-depth: 0
 
@@ -19,13 +28,23 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          # Security: Use npm ci for reproducible builds with integrity checks
+          npm ci --prefer-offline --no-audit
 
       - name: Build website
         run: npm run build
 
+      # Security: Pin third-party action to commit SHA instead of tag (CWE-829)
+      # peaceiris/actions-gh-pages@v3.9.3 - Prevents tag hijacking attacks
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@4f9cc6602d3f66b9c108549d475ec49e8ef4d45e
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build # Carpeta donde Docusaurus genera el HTML
+          publish_dir: ./build  # Carpeta donde Docusaurus genera el HTML
+          
+# Security improvements applied:
+# - Actions pinned to commit SHAs for immutability
+# - Explicit permissions defined (least privilege)
+# - Using npm ci with integrity checks
+# Note: actions/setup-node@v4 left as tag due to GitHub official action trust

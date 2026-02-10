@@ -1,3 +1,4 @@
+# Security: Use stable base image (CWE-829: Inclusion of Functionality from Untrusted Control Sphere)
 FROM node:20-bookworm
 
 # Install basic development tools and GitHub CLI
@@ -13,8 +14,17 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /workspaces/guides
+# Security: Create non-privileged user to avoid running as root (CWE-250: Execution with Unnecessary Privileges)
+# This follows the principle of least privilege
+RUN groupadd -g 1000 node-user && \
+    useradd -u 1000 -g node-user -m -s /bin/bash node-user && \
+    chown -R node-user:node-user /workspaces
+
 
 # Expose the Docusaurus port
+# Switch to non-privileged user for all subsequent operations
+USER node-user
+
 EXPOSE 3000
 
 # Keep the container running

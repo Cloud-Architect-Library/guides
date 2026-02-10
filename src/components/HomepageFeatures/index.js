@@ -5,6 +5,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 const FeatureList = [
   {
+    id: 'best-practices',
     title: 'Mejores Prácticas',
     img: 'img/best-practices.png',
     description: (
@@ -16,6 +17,7 @@ const FeatureList = [
   },
   {
     title: 'Arquitecturas de Referencia',
+    id: 'reference-architectures',
     img: 'img/architecture.png',
     description: (
       <>
@@ -26,6 +28,7 @@ const FeatureList = [
   },
   {
     title: 'Infraestructura como Código',
+    id: 'infrastructure-as-code',
     img: 'img/iac.png',
     description: (
       <>
@@ -57,8 +60,9 @@ export default function HomepageFeatures() {
     <section className={styles.features}>
       <div className="container">
         <div className="row">
+          {/* Security: Using stable id as key instead of array index for better React reconciliation */}
           {FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
+            <Feature key={props.id} {...props} />
           ))}
         </div>
       </div>
