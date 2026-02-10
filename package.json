@@ -5,6 +5,7 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start --host 0.0.0.0 --poll",
+    "start:secure": "docusaurus start --host localhost --poll",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -40,5 +41,12 @@
   },
   "engines": {
     "node": ">=20.0"
+  },
+  "comments": {
+    "security": {
+      "start-script": "Uses --host 0.0.0.0 for dev container accessibility. For local development in untrusted networks, use 'npm run start:secure' which binds to localhost only.",
+      "dependencies": "Run 'npm audit' regularly to check for known vulnerabilities",
+      "updates": "Keep dependencies updated, especially security patches for @docusaurus packages"
+    }
   }
 }
