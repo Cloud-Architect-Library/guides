@@ -15,7 +15,9 @@ sidebar_position: 1
 
 ## 📋 Introducción
 
-**FinOps Guard** es un agente inteligente multi-nodo orientado a Strands (LangGraph) para el monitoreo automatizado de costos en AWS. Detecta anomalías en el gasto cloud, genera recomendaciones de remediación respaldadas por LLM, y publica reportes semanales a Microsoft Teams y correo electrónico.
+**FinOps Guard** es un agente inteligente multi-nodo orientado a Strands (LangGraph) para el monitoreo automatizado de costos en AWS. Detecta anomalías en el gasto cloud, genera recomendaciones de remediación respaldadas por LLM (opcional), y publica reportes semanales a Microsoft Teams y correo electrónico.
+
+**Versión actual**: v2.4.0 (Marzo 2026)
 
 ### ¿Qué Problema Resuelve?
 
@@ -26,22 +28,27 @@ En entornos cloud empresariales, es común enfrentar:
 - ⏰ **Detección tardía** de anomalías que ya impactaron el presupuesto
 - 📊 **Reportes manuales** que consumen tiempo del equipo FinOps
 - 🎯 **Falta de recomendaciones accionables** para optimizar costos
+- 💰 **Sin visibilidad del valor real** de las recomendaciones implementadas
 
 ### Solución: Agente Autónomo con IA
 
 FinOps Guard automatiza el ciclo completo de monitoreo de costos:
 
 ```
-Ingestión de Datos → Detección de Anomalías → Análisis con LLM → Recomendaciones → Notificaciones
+Ingestión → Detección → Análisis LLM → Recomendaciones → Notificaciones → Tracking → Validación
 ```
 
 **Características principales:**
 - ✅ Monitoreo continuo de costos AWS (ventana de 90 días)
-- ✅ Detección diaria de anomalías por cuenta/servicio/tag
-- ✅ Insights y recomendaciones generadas por LLM
-- ✅ Reportes semanales automáticos a Teams y email
+- ✅ Detección diaria de anomalías por cuenta/servicio/tag con umbrales adaptativos
+- ✅ Insights y recomendaciones generadas por LLM (Amazon Bedrock Claude 3 Sonnet)
+- ✅ Reportes semanales automáticos a Teams y email ejecutivo
 - ✅ Arquitectura multi-nodo con Strands (LangGraph)
-- ✅ Despliegue serverless en AWS Lambda
+- ✅ Despliegue serverless en AWS Lambda con CI/CD automatizado
+- ✅ **Tracking de valor de IA**: seguimiento de recomendaciones aceptadas/rechazadas
+- ✅ **Closed-loop savings**: medición de ahorros reales vs estimados
+- ✅ **Resiliencia enterprise**: circuit breakers, retries, fallbacks determinísticos
+- ✅ **Seguridad hardened**: auditoría completa, secrets management, IAM least-privilege
 
 ---
 
@@ -100,29 +107,134 @@ FinOps Guard utiliza **LangGraph** (framework de Strands) para orquestar un fluj
 ### Componentes Clave
 
 **1. Graph Orchestrator** (`finopsguard/graph.py`)
-- Orquesta el pipeline de nodos
+- Orquesta el pipeline de nodos con resiliencia enterprise
 - Gestiona el flujo de datos entre nodos
-- Maneja errores y reintentos
+- Maneja errores, reintentos y circuit breakers
+- Métricas EMF para CloudWatch
+- Sanitización de logs sensibles
 
 **2. Environment Manager** (`finopsguard/env.py`)
 - Resolución de configuración runtime
 - Gestión de variables de entorno
 - Soporte multi-entorno (local/serverless)
+- Overrides por tenant y environment
 
 **3. Data Models** (`finopsguard/models.py`)
 - Contratos de datos compartidos
 - Validación de esquemas
 - Serialización/deserialización
 
-**4. Notification Tools** (`finopsguard/tools/notify_teams.py`)
-- Integración con Microsoft Teams webhook
-- Formateo de mensajes
-- Gestión de errores de notificación
+**4. LLM Client** (`finopsguard/tools/llm_client.py`)
+- Integración con Amazon Bedrock (Claude 3 Sonnet)
+- Fallback determinístico cuando LLM está deshabilitado
+- Cost guardrails y circuit breakers
+- Parsing robusto de respuestas JSON
 
-**5. Prompt Templates** (`finopsguard/prompts/`)
-- Templates para análisis LLM
+**5. Notification Tools**
+- `notify_teams.py`: Integración con Microsoft Teams webhook (Adaptive Cards)
+- `notify_sns.py`: Notificaciones ejecutivas por SNS/email con formato legible
+
+**6. Action Registry** (`finopsguard/tools/action_registry_store.py`)
+- Registro unificado de recomendaciones
+- Tracking de outcomes (accepted/rejected/pending)
+- Audit trail de transiciones de estado
+- Backends: local JSON o DynamoDB
+
+**7. Run History Store** (`finopsguard/tools/run_history_store.py`)
+- Histórico de ejecuciones para análisis de tendencias
+- Métricas de valor de IA (acceptance rate, savings)
+- Backends: local JSON o DynamoDB
+
+**8. Suppression Store** (`finopsguard/tools/suppression_store.py`)
+- Previene notificaciones duplicadas
+- Ventana de supresión configurable
+- Backends: local JSON o DynamoDB
+
+**9. Prompt Templates** (`finopsguard/prompts/`)
+- Templates para análisis LLM con contexto FinOps
 - Prompts para generación de insights
-- Prompts para recomendaciones
+- Prompts para recomendaciones accionables
+
+---
+
+## 🆕 Novedades v2.4.0 (Marzo 2026)
+
+### Tracking de Valor de IA
+
+**Problema resuelto**: ¿Cuánto valor real generan las recomendaciones del agente?
+
+**Solución**: Sistema completo de tracking de outcomes:
+
+- **Lifecycle de acciones**: `pending` → `accepted` / `rejected`
+- **KPIs de valor**:
+  - `ai_value_acceptance_rate_pct`: % de recomendaciones aceptadas
+  - `ai_value_accepted_count`: Recomendaciones implementadas
+  - `ai_value_rejected_count`: Recomendaciones descartadas
+  - `ai_value_pending_count`: Recomendaciones pendientes de evaluación
+- **Tendencias 4 semanas**:
+  - `ai_value_acceptance_rate_4w_avg_pct`: Tendencia de aceptación
+  - `ai_value_pending_backlog_delta_4w`: Crecimiento del backlog
+  - `ai_value_outcome_evaluated_count_4w`: Total evaluado
+
+**Visibilidad**:
+- Bloque "Action Outcomes" en Teams
+- Sección `action_outcomes` en email ejecutivo
+- Dashboard CloudWatch con widgets de tendencia
+- Alarmas de regresión (baja aceptación, backlog alto)
+
+**CLI para operaciones**:
+```bash
+# Marcar recomendación como aceptada
+python scripts/update_action_outcome.py \
+  --action "Rightsize compute and enforce scale-in policy" \
+  --target "prod:AmazonEC2" \
+  --outcome-status accepted \
+  --reason "Savings validated after implementation" \
+  --owner "platform-team"
+```
+
+### Closed-Loop Savings Tracking (v1.6.0)
+
+**Métricas de ahorros reales**:
+- `realized_savings_usd`: Ahorros confirmados tras implementación
+- `estimated_open_savings_usd`: Ahorros potenciales de acciones abiertas
+- `top_realized_action_<n>_savings_usd`: Top acciones por ahorro real
+
+### Resiliencia Enterprise
+
+**Circuit Breakers**:
+- Previene cascading failures en llamadas LLM
+- Estados: `closed` → `open` → `half_open`
+- Métricas: `llm_circuit_state`, `llm_circuit_open_events_count`
+
+**Retry Policies**:
+- Exponential backoff con jitter
+- Overrides por dominio (AWS, LLM)
+- Métricas: `aws_retry_attempts_count`, `llm_retry_exhausted_count`
+
+**Fallbacks Determinísticos**:
+- Si LLM falla, usa reglas predefinidas
+- No rompe el pipeline
+- Métricas: `llm_fallback_count`
+
+### Seguridad Hardened
+
+**Auditoría completa**:
+- `SECURITY_AUDIT.md`: Análisis exhaustivo de seguridad
+- `SECURITY_CHECKLIST.md`: Checklist para code reviews
+- Sanitización de logs (emails, ARNs, tokens, webhooks)
+- Secrets en AWS Secrets Manager
+
+**IAM Least-Privilege**:
+- Plantillas versionadas en `infra/iam/`
+- OIDC para GitHub Actions (sin PATs)
+- Permisos mínimos por recurso
+
+**Approval-Gated Remediation**:
+- Playbooks deshabilitados por defecto
+- Dry-run obligatorio
+- Requiere aprobación explícita para ejecución real
+- Audit trail completo
 
 ---
 
@@ -189,8 +301,7 @@ Volúmenes EBS y snapshots sin usar acumulan costos.
 
 ## 💻 Implementación
 
-### Estructura del Proyecto
-
+### Estructura del Proyecto (Actualizada v2.4.0)
 
 <details>
 <summary>📁 Ver estructura completa del proyecto</summary>
@@ -198,29 +309,68 @@ Volúmenes EBS y snapshots sin usar acumulan costos.
 ```
 FinOpsGuard/
 ├── finopsguard/
-│   ├── graph.py              # Orquestador del pipeline de nodos
+│   ├── graph.py              # Orquestador del pipeline (resiliencia enterprise)
 │   ├── env.py                # Gestión de configuración y entorno
 │   ├── models.py             # Modelos de datos compartidos
 │   ├── tools/
-│   │   └── notify_teams.py   # Notificador de Microsoft Teams
+│   │   ├── llm_client.py     # Cliente LLM con Bedrock + fallbacks
+│   │   ├── notify_teams.py   # Notificador Microsoft Teams (Adaptive Cards)
+│   │   ├── notify_sns.py     # Notificador SNS/email ejecutivo
+│   │   ├── action_registry_store.py  # Registro de acciones + outcomes
+│   │   ├── action_status.py  # Gestión de estados de acciones
+│   │   ├── run_history_store.py      # Histórico de runs
+│   │   ├── suppression_store.py      # Supresión de notificaciones
+│   │   ├── monthly_ops_review.py     # Generador de reportes mensuales
+│   │   ├── remediation_playbooks.py  # Playbooks de remediación
+│   │   ├── release_policy.py         # Políticas de release
+│   │   └── review_policy.py          # Políticas de code review
 │   └── prompts/              # Templates de prompts para LLM
-│       ├── insights.txt      # Prompts para análisis
-│       └── actions.txt       # Prompts para recomendaciones
+│       ├── insight.txt       # Prompts para análisis
+│       └── action.txt        # Prompts para recomendaciones
 ├── configs/
 │   ├── local.yaml            # Configuración para desarrollo local
 │   └── serverless.yaml       # Configuración para Lambda
 ├── prod/
 │   └── lambda/               # Deployment para AWS Lambda
 │       ├── handler.py        # Lambda handler
-│       └── requirements.txt  # Dependencias Lambda
+│       └── template.yaml     # SAM template (CloudFormation)
+├── infra/
+│   └── iam/                  # Plantillas IAM versionadas
+│       ├── GitHubActionsFinOpsGuardDeployRole-trust-policy.json
+│       └── GitHubActionsFinOpsGuardDeployPolicy.json
 ├── scripts/
-│   └── run_weekly.py         # Script para ejecución semanal
-├── tests/                    # Tests unitarios
+│   ├── run_weekly.py         # Script para ejecución semanal
+│   ├── update_action_outcome.py      # CLI para actualizar outcomes
+│   ├── update_action_status.py       # CLI para actualizar estados
+│   ├── action_transition_history.py  # CLI para audit trail
+│   ├── run_remediation_playbook.py   # CLI para ejecutar playbooks
+│   ├── monthly_ops_review.py         # Generador de reporte mensual
+│   ├── diagnose_run.py               # Diagnóstico de ejecuciones
+│   ├── diagnose_notify_decision.py   # Diagnóstico de notificaciones
+│   ├── evaluate_llm_quality.py       # Evaluación de calidad LLM
+│   └── compare_llm_modes.py          # Comparación LLM vs fallback
+├── tests/                    # Tests unitarios (170+ tests)
 ├── docs/
-│   ├── DEPLOY_CLIENT_PRODUCTION.md
-│   ├── POC_DOCKER.md
-│   └── DEPLOY_LAMBDA_PROD.md
+│   ├── RUNBOOK_CLIENT_SERVERLESS.md  # Runbook maestro
+│   ├── DEPLOY_LAMBDA_PROD.md         # Guía de deployment
+│   ├── CI_CD_SETUP.md                # Configuración CI/CD
+│   ├── BEDROCK_INTEGRATION_GUIDE.md  # Guía de integración Bedrock
+│   ├── SECURITY_AUDIT.md             # Auditoría de seguridad
+│   ├── SECURITY_CHECKLIST.md         # Checklist de seguridad
+│   ├── OPS_STEP_BY_STEP_CHECKS.md    # Checks operativos
+│   ├── QUARTERLY_OPERATIONS_RUNBOOK.md  # Runbook trimestral
+│   └── releases/             # Notas de release por versión
+│       ├── v2.4.0.md         # Latest: Action outcomes tracking
+│       ├── v2.3.0.md         # Bedrock integration
+│       ├── v2.2.0.md         # Executive email formatter
+│       └── ...
+├── .github/
+│   └── workflows/
+│       ├── ci.yml            # CI automático (lint + tests + SAM validate)
+│       └── deploy-serverless.yml  # Deploy manual a producción
 ├── .env.example              # Variables de entorno de ejemplo
+├── SECURITY.md               # Política de seguridad
+├── AGENTS.md                 # Política de PR review
 ├── config.yaml               # Configuración principal
 ├── pyproject.toml            # Configuración del proyecto Python
 └── requirements.txt          # Dependencias del proyecto
@@ -235,16 +385,20 @@ FinOpsGuard/
 - IAM Role con permisos de lectura de Cost Explorer
 - AWS Lambda (para deployment serverless)
 - EventBridge (para scheduling)
+- DynamoDB (para action registry, run history, suppression)
+- Secrets Manager (para webhook Teams)
+- SNS Topic (para notificaciones ejecutivas)
+- Amazon Bedrock (opcional, para LLM)
 
 **Integraciones:**
 - Microsoft Teams webhook URL
-- Proveedor LLM (OpenAI, Anthropic, AWS Bedrock, etc.)
-- SMTP para notificaciones por email (opcional)
+- SNS Topic con suscriptores confirmados
+- Amazon Bedrock habilitado (opcional)
 
 **Herramientas de desarrollo:**
 - Python 3.9+
-- pip o poetry para gestión de dependencias
 - AWS CLI configurado
+- SAM CLI para deployment
 - Docker (para POC local)
 
 ### Instalación Local
