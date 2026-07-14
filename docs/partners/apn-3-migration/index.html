@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="es" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-partners/apn-3-migration" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">apn-3-migration | Cloud Architect Library</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://Cloud-Architect-Library.github.io/guides/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://Cloud-Architect-Library.github.io/guides/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://Cloud-Architect-Library.github.io/guides/docs/partners/apn-3-migration"><meta data-rh="true" property="og:locale" content="es"><meta data-rh="true" name="docusaurus_locale" content="es"><meta data-rh="true" name="docsearch:language" content="es"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="apn-3-migration | Cloud Architect Library"><meta data-rh="true" name="description" content="AWS"><meta data-rh="true" property="og:description" content="AWS"><link data-rh="true" rel="icon" href="/guides/img/favicon.png"><link data-rh="true" rel="canonical" href="https://Cloud-Architect-Library.github.io/guides/docs/partners/apn-3-migration"><link data-rh="true" rel="alternate" href="https://Cloud-Architect-Library.github.io/guides/docs/partners/apn-3-migration" hreflang="es"><link data-rh="true" rel="alternate" href="https://Cloud-Architect-Library.github.io/guides/docs/partners/apn-3-migration" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Partners","item":"https://Cloud-Architect-Library.github.io/guides/docs/category/partners"},{"@type":"ListItem","position":2,"name":"Migración a APN 3.0","item":"https://Cloud-Architect-Library.github.io/guides/docs/partners/apn-3-migration"}]}</script><link rel="stylesheet" href="/guides/assets/css/styles.a71b8fb2.css">
+<script src="/guides/assets/js/runtime~main.20ac66b3.js" defer="defer"></script>
+<script src="/guides/assets/js/main.9d077a39.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><link rel="preload" as="image" href="/guides/img/logo.png"><div role="region" aria-label="Saltar al contenido principal"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Saltar al contenido principal</a></div><nav aria-label="Principal" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Alternar barra lateral" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/guides/"><div class="navbar__logo"><img src="/guides/img/logo.png" alt="Cloud Architect Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/guides/img/logo.png" alt="Cloud Architect Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Cloud Architect Library</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/guides/docs/intro">Guías</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/Cloud-Architect-Library/guides" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Cambiar entre modo oscuro y claro (actualmente system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Volver al principio" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Barra lateral de Documentos" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/guides/docs/intro"><span title="Introducción" class="linkLabel_WmDU">Introducción</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/guides/docs/category/ia"><span title="IA" class="categoryLinkLabel_W154">IA</span></a><button aria-label="Ampliar la categoría &#x27;IA&#x27; de la barra lateral" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/guides/docs/category/computación"><span title="Computación" class="categoryLinkLabel_W154">Computación</span></a><button aria-label="Ampliar la categoría &#x27;Computación&#x27; de la barra lateral" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/guides/docs/category/seguridad"><span title="Seguridad" class="categoryLinkLabel_W154">Seguridad</span></a><button aria-label="Ampliar la categoría &#x27;Seguridad&#x27; de la barra lateral" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/guides/docs/category/networking"><span title="Networking" class="categoryLinkLabel_W154">Networking</span></a><button aria-label="Ampliar la categoría &#x27;Networking&#x27; de la barra lateral" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/guides/docs/category/partners"><span title="Partners" class="categoryLinkLabel_W154">Partners</span></a><button aria-label="Colapsar categoría &#x27;Partners&#x27; de la barra lateral" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/guides/docs/partners/prm-onboarding"><span title="PRM - Partner Revenue Measurement" class="linkLabel_WmDU">PRM - Partner Revenue Measurement</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/guides/docs/partners/apn-3-migration"><span title="Migración a APN 3.0" class="linkLabel_WmDU">Migración a APN 3.0</span></a></li></ul></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Rastro de navegación"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Página de Inicio" class="breadcrumbs__link" href="/guides/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/guides/docs/category/partners"><span>Partners</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Migración a APN 3.0</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">En esta página</button></div><div class="theme-doc-markdown markdown"><div align="center">
+<header><h1>🚀 Migración a APN 3.0 — AWS Partner Central en la Consola AWS</h1></header>
+<p><img decoding="async" loading="lazy" src="https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&amp;logo=amazon-aws&amp;logoColor=white" alt="AWS" class="img_ev3q">
+<img decoding="async" loading="lazy" src="https://img.shields.io/badge/Partner_Central-232F3E?style=for-the-badge&amp;logo=amazonaws&amp;logoColor=white" alt="Partner Central" class="img_ev3q">
+<img decoding="async" loading="lazy" src="https://img.shields.io/badge/IAM-527FFF?style=for-the-badge&amp;logo=amazon-aws&amp;logoColor=white" alt="IAM" class="img_ev3q"></p>
+</div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-introducción">📋 Introducción<a href="#-introducción" class="hash-link" aria-label="Enlace directo al 📋 Introducción" title="Enlace directo al 📋 Introducción" translate="no">​</a></h2>
+<p><strong>APN 3.0</strong> es la nueva experiencia de AWS Partner Central integrada directamente en la AWS Management Console. Esta migración unifica Partner Central y AWS Marketplace en una sola plataforma, reemplazando el portal legacy basado en Salesforce por un modelo nativo de AWS con autenticación IAM.</p>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Deadline obligatorio</div><div class="admonitionContent_BuS1"><p><strong>Todos los partners deben completar la migración antes del 30 de septiembre de 2026.</strong> Después de esta fecha, el portal legacy será desactivado y se perderá acceso a oportunidades de co-sell, aprobaciones de reseller, metadata de soluciones y engagement con AWS.</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-cambia-con-apn-30">¿Qué cambia con APN 3.0?<a href="#qué-cambia-con-apn-30" class="hash-link" aria-label="Enlace directo al ¿Qué cambia con APN 3.0?" title="Enlace directo al ¿Qué cambia con APN 3.0?" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th style="text-align:left">Aspecto</th><th style="text-align:left">Portal Legacy</th><th style="text-align:left">APN 3.0 (Nueva Experiencia)</th></tr></thead><tbody><tr><td style="text-align:left"><strong>Acceso</strong></td><td style="text-align:left">Portal independiente con credenciales APN</td><td style="text-align:left">AWS Management Console con IAM</td></tr><tr><td style="text-align:left"><strong>Autenticación</strong></td><td style="text-align:left">Credenciales propias de Partner Central</td><td style="text-align:left">IAM Users, Roles o IAM Identity Center</td></tr><tr><td style="text-align:left"><strong>Marketplace</strong></td><td style="text-align:left">Portal separado (AMMP)</td><td style="text-align:left">Integrado en la misma consola</td></tr><tr><td style="text-align:left"><strong>APIs</strong></td><td style="text-align:left">Integración S3 para ACE</td><td style="text-align:left">APIs nativas de Partner Central</td></tr><tr><td style="text-align:left"><strong>Permisos</strong></td><td style="text-align:left">Roles internos del portal</td><td style="text-align:left">Políticas IAM granulares</td></tr><tr><td style="text-align:left"><strong>Co-sell (ACE)</strong></td><td style="text-align:left">Flujo en portal separado</td><td style="text-align:left">Unificado en consola AWS</td></tr><tr><td style="text-align:left"><strong>Funding &amp; Benefits</strong></td><td style="text-align:left">Secciones dispersas</td><td style="text-align:left">Dashboard centralizado</td></tr></tbody></table>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>¿Por qué migrar ahora?</div><div class="admonitionContent_BuS1"><p>Además del deadline obligatorio, la nueva experiencia ofrece acceso a nuevas APIs (Selling API, Benefits API), integración directa con CRM vía conectores nativos, agentes de IA para onboarding y co-sell, y analytics mejorados en un solo lugar.</p></div></div>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-prerequisitos">✅ Prerequisitos<a href="#-prerequisitos" class="hash-link" aria-label="Enlace directo al ✅ Prerequisitos" title="Enlace directo al ✅ Prerequisitos" translate="no">​</a></h2>
+<p>Antes de iniciar la migración, asegúrate de cumplir con lo siguiente:</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-identificar-al-alliance-lead">1. Identificar al Alliance Lead<a href="#1-identificar-al-alliance-lead" class="hash-link" aria-label="Enlace directo al 1. Identificar al Alliance Lead" title="Enlace directo al 1. Identificar al Alliance Lead" translate="no">​</a></h3>
+<p>El <strong>Alliance Lead</strong> es la persona responsable de iniciar la migración. Esta persona debe:</p>
+<ul>
+<li class="">✅ Tener rol de Alliance Lead en el portal legacy de Partner Central</li>
+<li class="">✅ Tener autoridad para aceptar los términos y condiciones de APN</li>
+<li class="">✅ Tener acceso a una cuenta AWS con permisos administrativos</li>
+</ul>
+<div class="theme-admonition theme-admonition-note admonition_xJq3 alert alert--secondary"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M6.3 5.69a.942.942 0 0 1-.28-.7c0-.28.09-.52.28-.7.19-.18.42-.28.7-.28.28 0 .52.09.7.28.18.19.28.42.28.7 0 .28-.09.52-.28.7a1 1 0 0 1-.7.3c-.28 0-.52-.11-.7-.3zM8 7.99c-.02-.25-.11-.48-.31-.69-.2-.19-.42-.3-.69-.31H6c-.27.02-.48.13-.69.31-.2.2-.3.44-.31.69h1v3c.02.27.11.5.31.69.2.2.42.31.69.31h1c.27 0 .48-.11.69-.31.2-.19.3-.42.31-.69H8V7.98v.01zM7 2.3c-3.14 0-5.7 2.54-5.7 5.68 0 3.14 2.56 5.7 5.7 5.7s5.7-2.55 5.7-5.7c0-3.15-2.56-5.69-5.7-5.69v.01zM7 .98c3.86 0 7 3.14 7 7s-3.14 7-7 7-7-3.12-7-7 3.14-7 7-7z"></path></svg></span>¿Quién es el Alliance Lead?</div><div class="admonitionContent_BuS1"><p>Es el contacto principal de tu organización registrado en Partner Central. Si no sabes quién es, puedes verificarlo en el portal legacy bajo <strong>My Company &gt; Users</strong> o contactar a tu AWS Partner Manager.</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-cuenta-aws-preparada">2. Cuenta AWS preparada<a href="#2-cuenta-aws-preparada" class="hash-link" aria-label="Enlace directo al 2. Cuenta AWS preparada" title="Enlace directo al 2. Cuenta AWS preparada" translate="no">​</a></h3>
+<ul>
+<li class="">✅ Tener una cuenta AWS dedicada para la vinculación con Partner Central</li>
+<li class="">✅ Tener acceso como administrador IAM en esa cuenta</li>
+<li class="">✅ Verificar que la cuenta tiene un plan de soporte activo (al menos Business)</li>
+<li class="">✅ Asegurar que la cuenta no está restringida o suspendida</li>
+</ul>
+<div class="theme-admonition theme-admonition-caution admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Vinculación permanente</div><div class="admonitionContent_BuS1"><p>La vinculación de la cuenta AWS con Partner Central es <strong>permanente después de la migración</strong>. Antes de migrar puedes desvincular y elegir otra cuenta, pero después de migrar no se puede cambiar. Elige cuidadosamente qué cuenta vincular.</p></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-plan-de-gestión-de-usuarios">3. Plan de gestión de usuarios<a href="#3-plan-de-gestión-de-usuarios" class="hash-link" aria-label="Enlace directo al 3. Plan de gestión de usuarios" title="Enlace directo al 3. Plan de gestión de usuarios" translate="no">​</a></h3>
+<ul>
+<li class="">✅ Listar todos los usuarios activos en el portal legacy</li>
+<li class="">✅ Definir qué roles IAM necesitará cada usuario</li>
+<li class="">✅ Decidir si usarás IAM Users directos o IAM Identity Center (SSO)</li>
+<li class="">✅ Preparar las políticas IAM necesarias</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-integraciones-existentes">4. Integraciones existentes<a href="#4-integraciones-existentes" class="hash-link" aria-label="Enlace directo al 4. Integraciones existentes" title="Enlace directo al 4. Integraciones existentes" translate="no">​</a></h3>
+<ul>
+<li class="">✅ Documentar integraciones actuales (CRM, herramientas de co-sell, etc.)</li>
+<li class="">✅ Verificar si tu proveedor de integración ya soporta las nuevas APIs</li>
+<li class="">✅ Planificar la migración de integraciones S3 legacy a las nuevas APIs</li>
+</ul>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="️-paso-1-vincular-la-cuenta-aws">🛠️ Paso 1: Vincular la Cuenta AWS<a href="#️-paso-1-vincular-la-cuenta-aws" class="hash-link" aria-label="Enlace directo al 🛠️ Paso 1: Vincular la Cuenta AWS" title="Enlace directo al 🛠️ Paso 1: Vincular la Cuenta AWS" translate="no">​</a></h2>
+<p>El primer paso es vincular tu cuenta de AWS Partner Central con una cuenta AWS. Este proceso crea la conexión que permitirá acceder a Partner Central desde la consola AWS.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="proceso-de-account-linking">Proceso de Account Linking<a href="#proceso-de-account-linking" class="hash-link" aria-label="Enlace directo al Proceso de Account Linking" title="Enlace directo al Proceso de Account Linking" translate="no">​</a></h3>
+<!-- -->
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="pasos-detallados">Pasos detallados<a href="#pasos-detallados" class="hash-link" aria-label="Enlace directo al Pasos detallados" title="Enlace directo al Pasos detallados" translate="no">​</a></h3>
+<ol>
+<li class=""><strong>Inicia sesión</strong> en <a href="https://partnercentral.awspartner.com" target="_blank" rel="noopener noreferrer" class="">AWS Partner Central legacy</a> como Alliance Lead</li>
+<li class="">Navega a <strong>Settings &gt; Link AWS Account</strong> (o busca la sección AWS Marketplace en la home)</li>
+<li class="">Ingresa el <strong>AWS Account ID</strong> de la cuenta que deseas vincular</li>
+<li class="">AWS creará automáticamente un rol IAM llamado <code>PartnerCentralRoleForCloudAdmin-###</code> en tu cuenta</li>
+<li class="">El Alliance Lead será asignado como <strong>Cloud Admin</strong> por defecto</li>
+<li class="">Acepta los términos y condiciones</li>
+</ol>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>Cuenta recomendada</div><div class="admonitionContent_BuS1"><p>AWS recomienda usar una cuenta AWS dedicada que represente tu negocio global como partner. Si tienes múltiples cuentas de Marketplace en diferentes regiones, puedes conectarlas posteriormente usando <strong>Subsidiary Account Connections</strong>.</p></div></div>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-paso-2-configurar-roles-iam">👥 Paso 2: Configurar Roles IAM<a href="#-paso-2-configurar-roles-iam" class="hash-link" aria-label="Enlace directo al 👥 Paso 2: Configurar Roles IAM" title="Enlace directo al 👥 Paso 2: Configurar Roles IAM" translate="no">​</a></h2>
+<p>Tras vincular la cuenta, necesitas configurar los roles IAM para que tu equipo pueda acceder a Partner Central desde la consola AWS.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="roles-principales">Roles principales<a href="#roles-principales" class="hash-link" aria-label="Enlace directo al Roles principales" title="Enlace directo al Roles principales" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th style="text-align:left">Rol</th><th style="text-align:left">Descripción</th><th style="text-align:left">Permisos</th></tr></thead><tbody><tr><td style="text-align:left"><strong>Cloud Admin</strong></td><td style="text-align:left">Administrador de Partner Central. Gestiona usuarios y configuración</td><td style="text-align:left"><code>PartnerCentralRoleForCloudAdmin</code></td></tr><tr><td style="text-align:left"><strong>ACE Manager</strong></td><td style="text-align:left">Gestiona oportunidades de co-sell</td><td style="text-align:left">Políticas de Selling API</td></tr><tr><td style="text-align:left"><strong>Marketplace Seller</strong></td><td style="text-align:left">Administra listings en Marketplace</td><td style="text-align:left"><code>AWSMarketplaceSellerFullAccess</code></td></tr><tr><td style="text-align:left"><strong>Channel Manager</strong></td><td style="text-align:left">Gestiona relaciones de canal</td><td style="text-align:left">Políticas de Channel API</td></tr><tr><td style="text-align:left"><strong>CRM Integration</strong></td><td style="text-align:left">Service user para integraciones CRM</td><td style="text-align:left">Políticas de CRM Integration</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="crear-roles-con-políticas-aws-managed">Crear roles con políticas AWS managed<a href="#crear-roles-con-políticas-aws-managed" class="hash-link" aria-label="Enlace directo al Crear roles con políticas AWS managed" title="Enlace directo al Crear roles con políticas AWS managed" translate="no">​</a></h3>
+<p>AWS proporciona políticas managed que puedes usar directamente:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"># Verificar las políticas managed disponibles para Partner Central</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">aws iam list-policies --scope AWS --query &quot;Policies[?contains(PolicyName, &#x27;PartnerCentral&#x27;)]&quot; --output table</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="mapear-usuarios-a-roles-iam">Mapear usuarios a roles IAM<a href="#mapear-usuarios-a-roles-iam" class="hash-link" aria-label="Enlace directo al Mapear usuarios a roles IAM" title="Enlace directo al Mapear usuarios a roles IAM" translate="no">​</a></h3>
+<p>El Cloud Admin debe mapear los usuarios de Partner Central a roles IAM:</p>
+<ol>
+<li class="">Inicia sesión en Partner Central (nueva experiencia en la consola AWS)</li>
+<li class="">Navega a <strong>Settings &gt; User Management</strong></li>
+<li class="">Para cada usuario:
+<ul>
+<li class="">Selecciona el usuario</li>
+<li class="">Elige <strong>Map IAM Role</strong></li>
+<li class="">Asigna el rol IAM correspondiente a sus funciones</li>
+</ul>
+</li>
+</ol>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Opciones de autenticación</div><div class="admonitionContent_BuS1"><p>Tienes dos opciones para gestionar el acceso de tu equipo:</p><ul>
+<li class=""><strong>IAM Users:</strong> Crear usuarios IAM individuales en la cuenta vinculada. Más simple pero menos seguro para equipos grandes.</li>
+<li class=""><strong>IAM Identity Center (SSO):</strong> Federación con tu IdP corporativo (Okta, Azure AD, Google Workspace, etc.). Recomendado para equipos de más de 5 personas.</li>
+</ul></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ejemplo-política-iam-para-equipo-de-co-sell">Ejemplo: Política IAM para equipo de Co-sell<a href="#ejemplo-política-iam-para-equipo-de-co-sell" class="hash-link" aria-label="Enlace directo al Ejemplo: Política IAM para equipo de Co-sell" title="Enlace directo al Ejemplo: Política IAM para equipo de Co-sell" translate="no">​</a></h3>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;Version&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;2012-10-17&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;Statement&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;Sid&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;PartnerCentralSellingAccess&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;Effect&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Allow&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;Action&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">&quot;partnercentral-selling:CreateOpportunity&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">&quot;partnercentral-selling:UpdateOpportunity&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">&quot;partnercentral-selling:ListOpportunities&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">&quot;partnercentral-selling:GetOpportunity&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">&quot;partnercentral-selling:AssignOpportunity&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">&quot;partnercentral-selling:SubmitOpportunity&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;Resource&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;*&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;Sid&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;PartnerCentralReadOnly&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;Effect&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Allow&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;Action&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">&quot;partnercentral-selling:ListEngagements&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">&quot;partnercentral-selling:GetEngagement&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;Resource&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;*&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ejemplo-política-iam-para-benefits-api">Ejemplo: Política IAM para Benefits API<a href="#ejemplo-política-iam-para-benefits-api" class="hash-link" aria-label="Enlace directo al Ejemplo: Política IAM para Benefits API" title="Enlace directo al Ejemplo: Política IAM para Benefits API" translate="no">​</a></h3>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;Version&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;2012-10-17&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;Statement&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;Sid&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;PartnerCentralBenefitsAccess&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;Effect&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Allow&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;Action&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">&quot;partnercentral-benefits:ListBenefits&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">&quot;partnercentral-benefits:GetBenefit&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">&quot;partnercentral-benefits:CreateBenefitApplication&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token string" style="color:#e3116c">&quot;partnercentral-benefits:ListBenefitApplications&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token property" style="color:#36acaa">&quot;Resource&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;*&quot;</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></span></code></pre></div></div>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-paso-3-ejecutar-la-migración">🔄 Paso 3: Ejecutar la Migración<a href="#-paso-3-ejecutar-la-migración" class="hash-link" aria-label="Enlace directo al 🔄 Paso 3: Ejecutar la Migración" title="Enlace directo al 🔄 Paso 3: Ejecutar la Migración" translate="no">​</a></h2>
+<p>Una vez vinculada la cuenta y configurados los roles, el Alliance Lead (ahora Cloud Admin) inicia la migración formal.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="proceso-de-migración">Proceso de migración<a href="#proceso-de-migración" class="hash-link" aria-label="Enlace directo al Proceso de migración" title="Enlace directo al Proceso de migración" translate="no">​</a></h3>
+<!-- -->
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="tiempos-estimados">Tiempos estimados<a href="#tiempos-estimados" class="hash-link" aria-label="Enlace directo al Tiempos estimados" title="Enlace directo al Tiempos estimados" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th style="text-align:left">Tamaño de la organización</th><th style="text-align:left">Tiempo estimado</th></tr></thead><tbody><tr><td style="text-align:left">Pocas oportunidades (&lt;100)</td><td style="text-align:left">~2 horas</td></tr><tr><td style="text-align:left">Volumen medio (100-1000)</td><td style="text-align:left">~3-4 horas</td></tr><tr><td style="text-align:left">Alto volumen (&gt;1000)</td><td style="text-align:left">~4-6 horas</td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-se-migra-automáticamente">Qué se migra automáticamente<a href="#qué-se-migra-automáticamente" class="hash-link" aria-label="Enlace directo al Qué se migra automáticamente" title="Enlace directo al Qué se migra automáticamente" translate="no">​</a></h3>
+<ul>
+<li class="">✅ Datos de oportunidades ACE (historial completo)</li>
+<li class="">✅ Perfil de partner y metadata de soluciones</li>
+<li class="">✅ Listings de AWS Marketplace</li>
+<li class="">✅ Historial de funding y benefits</li>
+<li class="">✅ Relaciones de canal establecidas</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="qué-no-se-migra-automáticamente">Qué NO se migra automáticamente<a href="#qué-no-se-migra-automáticamente" class="hash-link" aria-label="Enlace directo al Qué NO se migra automáticamente" title="Enlace directo al Qué NO se migra automáticamente" translate="no">​</a></h3>
+<ul>
+<li class="">❌ Credenciales de usuario (se reemplazan por IAM)</li>
+<li class="">❌ Integraciones S3 legacy (requieren migración a nuevas APIs)</li>
+<li class="">❌ Configuraciones de notificación personalizadas</li>
+<li class="">❌ Bookmarks o favoritos del portal legacy</li>
+</ul>
+<div class="theme-admonition theme-admonition-warning admonition_xJq3 alert alert--warning"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.893 1.5c-.183-.31-.52-.5-.887-.5s-.703.19-.886.5L.138 13.499a.98.98 0 0 0 0 1.001c.193.31.53.501.886.501h13.964c.367 0 .704-.19.877-.5a1.03 1.03 0 0 0 .01-1.002L8.893 1.5zm.133 11.497H6.987v-2.003h2.039v2.003zm0-3.004H6.987V5.987h2.039v4.006z"></path></svg></span>Downtime durante migración</div><div class="admonitionContent_BuS1"><p>Durante las 2-6 horas de migración, <strong>no tendrás acceso</strong> al portal legacy ni a la nueva experiencia. Planifica la migración en un horario de bajo impacto para tu equipo.</p></div></div>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-paso-4-migrar-integraciones">🔗 Paso 4: Migrar Integraciones<a href="#-paso-4-migrar-integraciones" class="hash-link" aria-label="Enlace directo al 🔗 Paso 4: Migrar Integraciones" title="Enlace directo al 🔗 Paso 4: Migrar Integraciones" translate="no">​</a></h2>
+<p>Si tu organización usa integraciones con el portal legacy (CRM connectors, herramientas de co-sell, etc.), debes migrarlas a las nuevas APIs.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="integraciones-s3-legacy--partner-central-apis">Integraciones S3 Legacy → Partner Central APIs<a href="#integraciones-s3-legacy--partner-central-apis" class="hash-link" aria-label="Enlace directo al Integraciones S3 Legacy → Partner Central APIs" title="Enlace directo al Integraciones S3 Legacy → Partner Central APIs" translate="no">​</a></h3>
+<p>La integración legacy usaba buckets S3 para intercambiar datos de oportunidades. La nueva experiencia ofrece APIs RESTful nativas.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th style="text-align:left">Funcionalidad</th><th style="text-align:left">Legacy (S3)</th><th style="text-align:left">Nuevo (API)</th></tr></thead><tbody><tr><td style="text-align:left">Crear oportunidad</td><td style="text-align:left">Upload CSV a S3</td><td style="text-align:left"><code>CreateOpportunity</code> API</td></tr><tr><td style="text-align:left">Actualizar oportunidad</td><td style="text-align:left">Upload CSV a S3</td><td style="text-align:left"><code>UpdateOpportunity</code> API</td></tr><tr><td style="text-align:left">Listar oportunidades</td><td style="text-align:left">Download CSV desde S3</td><td style="text-align:left"><code>ListOpportunities</code> API</td></tr><tr><td style="text-align:left">Recibir referrals</td><td style="text-align:left">Polling de S3</td><td style="text-align:left">Event notifications / <code>ListEngagements</code></td></tr></tbody></table>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="conector-nativo-de-crm-salesforce">Conector nativo de CRM (Salesforce)<a href="#conector-nativo-de-crm-salesforce" class="hash-link" aria-label="Enlace directo al Conector nativo de CRM (Salesforce)" title="Enlace directo al Conector nativo de CRM (Salesforce)" translate="no">​</a></h3>
+<p>AWS ofrece un conector nativo para Salesforce que se configura directamente desde Partner Central:</p>
+<ol>
+<li class="">Navega a <strong>Settings &gt; CRM Integration</strong> en Partner Central</li>
+<li class="">Selecciona tu CRM (Salesforce)</li>
+<li class="">Sigue el wizard de configuración guiada</li>
+<li class="">Mapea campos de oportunidades entre Salesforce y ACE</li>
+<li class="">Configura la sincronización bidireccional</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="proveedores-de-integración-compatibles">Proveedores de integración compatibles<a href="#proveedores-de-integración-compatibles" class="hash-link" aria-label="Enlace directo al Proveedores de integración compatibles" title="Enlace directo al Proveedores de integración compatibles" translate="no">​</a></h3>
+<p>Si usas un tercero para gestionar tu co-sell, verifica que ya soporte las nuevas APIs:</p>
+<ul>
+<li class=""><strong>WorkSpan</strong> — Launch Partner oficial, soporte completo</li>
+<li class=""><strong>Labra</strong> — Launch Partner oficial, migración asistida</li>
+<li class=""><strong>Clazar</strong> — Launch Partner oficial</li>
+<li class=""><strong>Suger</strong> — Soporte para APIs de Partner Central</li>
+</ul>
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>Planifica la migración de integraciones</div><div class="admonitionContent_BuS1"><p>No esperes al último momento. Contacta a tu proveedor de integración con anticipación para coordinar el timeline de migración. La mayoría ofrece asistencia sin costo adicional.</p></div></div>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="️-paso-5-validar-y-verificar">✔️ Paso 5: Validar y Verificar<a href="#️-paso-5-validar-y-verificar" class="hash-link" aria-label="Enlace directo al ✔️ Paso 5: Validar y Verificar" title="Enlace directo al ✔️ Paso 5: Validar y Verificar" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="checklist-post-migración">Checklist post-migración<a href="#checklist-post-migración" class="hash-link" aria-label="Enlace directo al Checklist post-migración" title="Enlace directo al Checklist post-migración" translate="no">​</a></h3>
+<p>Después de completar la migración, verifica los siguientes puntos:</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="acceso-y-autenticación">Acceso y autenticación<a href="#acceso-y-autenticación" class="hash-link" aria-label="Enlace directo al Acceso y autenticación" title="Enlace directo al Acceso y autenticación" translate="no">​</a></h4>
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> El Cloud Admin puede acceder a Partner Central desde la consola AWS</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> Todos los usuarios mapeados pueden iniciar sesión con sus credenciales IAM</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> Los permisos de cada rol funcionan correctamente (cada usuario ve solo lo que debe)</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> IAM Identity Center funciona si se configuró SSO</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="datos-y-oportunidades">Datos y oportunidades<a href="#datos-y-oportunidades" class="hash-link" aria-label="Enlace directo al Datos y oportunidades" title="Enlace directo al Datos y oportunidades" translate="no">​</a></h4>
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> Las oportunidades ACE históricas están visibles</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> Se pueden crear nuevas oportunidades</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> Los datos de co-sell se sincronizan correctamente</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> El historial de funding y benefits está accesible</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="marketplace">Marketplace<a href="#marketplace" class="hash-link" aria-label="Enlace directo al Marketplace" title="Enlace directo al Marketplace" translate="no">​</a></h4>
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> Los listings de productos están visibles y editables</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> Las ofertas privadas (CPPO) funcionan correctamente</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> La vinculación entre ACE y Marketplace Private Offers funciona</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> Los reportes de Marketplace están disponibles</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="integraciones">Integraciones<a href="#integraciones" class="hash-link" aria-label="Enlace directo al Integraciones" title="Enlace directo al Integraciones" translate="no">​</a></h4>
+<ul class="contains-task-list containsTaskList_mC6p">
+<li class="task-list-item"><input type="checkbox" disabled=""> El conector de CRM sincroniza bidirecccionalmente</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> Las APIs de Partner Central responden correctamente</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> Las automatizaciones existentes funcionan con las nuevas APIs</li>
+<li class="task-list-item"><input type="checkbox" disabled=""> Los webhooks/eventos de notificación están configurados</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="comando-de-verificación-rápida">Comando de verificación rápida<a href="#comando-de-verificación-rápida" class="hash-link" aria-label="Enlace directo al Comando de verificación rápida" title="Enlace directo al Comando de verificación rápida" translate="no">​</a></h3>
+<p>Puedes verificar el acceso programático a las nuevas APIs:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain"># Verificar acceso a la Selling API</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">aws partnercentral-selling list-opportunities \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  --catalog &quot;AWS&quot; \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  --max-results 5 \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  --region us-east-1</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"># Verificar acceso a la Benefits API</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">aws partnercentral-benefits list-benefits \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  --catalog &quot;AWS&quot; \</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">  --region us-east-1</span><br></span></code></pre></div></div>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="️-troubleshooting">⚠️ Troubleshooting<a href="#️-troubleshooting" class="hash-link" aria-label="Enlace directo al ⚠️ Troubleshooting" title="Enlace directo al ⚠️ Troubleshooting" translate="no">​</a></h2>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><strong>Error: &quot;Access Denied&quot; al acceder a Partner Central desde la consola</strong></summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+<p><strong>Causa:</strong> El usuario no tiene un rol IAM mapeado o el rol no tiene los permisos correctos.</p>
+<p><strong>Solución:</strong></p>
+<ol>
+<li class="">Verifica que el Cloud Admin haya mapeado un rol IAM al usuario</li>
+<li class="">Revisa que la política IAM incluya las acciones necesarias de <code>partnercentral-*</code></li>
+<li class="">Verifica que no hay SCPs (Service Control Policies) a nivel de Organization que bloqueen el acceso</li>
+</ol>
+</div></div></details>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><strong>La migración falla o se queda en &quot;In Progress&quot; por más de 8 horas</strong></summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+<p><strong>Causa:</strong> Posibles problemas con el volumen de datos o conflictos en la cuenta.</p>
+<p><strong>Solución:</strong></p>
+<ol>
+<li class="">Verifica que la cuenta AWS vinculada no tiene restricciones</li>
+<li class="">Contacta a <a href="https://partnercentral.awspartner.com" target="_blank" rel="noopener noreferrer" class="">AWS Partner Support</a> abriendo un caso</li>
+<li class="">Proporciona tu Partner ID y el timestamp de inicio de la migración</li>
+</ol>
+</div></div></details>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><strong>Usuarios del portal legacy no pueden acceder a la nueva experiencia</strong></summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+<p><strong>Causa:</strong> Los usuarios necesitan credenciales IAM nuevas; las credenciales legacy no funcionan.</p>
+<p><strong>Solución:</strong></p>
+<ol>
+<li class="">El Cloud Admin debe crear usuarios IAM o configurar IAM Identity Center</li>
+<li class="">Mapear cada usuario de Partner Central a un rol IAM desde Settings &gt; User Management</li>
+<li class="">Compartir las nuevas credenciales con cada usuario</li>
+</ol>
+</div></div></details>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><strong>Las oportunidades ACE no aparecen después de la migración</strong></summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+<p><strong>Causa:</strong> La migración de datos puede tener un delay adicional de hasta 24 horas.</p>
+<p><strong>Solución:</strong></p>
+<ol>
+<li class="">Espera 24 horas después de recibir la confirmación de migración exitosa</li>
+<li class="">Verifica que tienes permisos de <code>partnercentral-selling:ListOpportunities</code></li>
+<li class="">Si después de 24 horas siguen sin aparecer, abre un caso de soporte</li>
+</ol>
+</div></div></details>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><strong>El conector de CRM dejó de funcionar tras la migración</strong></summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+<p><strong>Causa:</strong> Las integraciones S3 legacy no funcionan con la nueva experiencia.</p>
+<p><strong>Solución:</strong></p>
+<ol>
+<li class="">Contacta a tu proveedor de integración para migrar a las nuevas APIs</li>
+<li class="">Si usas Salesforce directamente, configura el conector nativo desde Partner Central</li>
+<li class="">Verifica que el service user de CRM tiene el rol IAM de <code>CRM Integration</code> mapeado</li>
+</ol>
+</div></div></details>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-timeline-recomendado">📅 Timeline Recomendado<a href="#-timeline-recomendado" class="hash-link" aria-label="Enlace directo al 📅 Timeline Recomendado" title="Enlace directo al 📅 Timeline Recomendado" translate="no">​</a></h2>
+<p>Para una migración exitosa, sigue este timeline:</p>
+<!-- -->
+<div class="theme-admonition theme-admonition-tip admonition_xJq3 alert alert--success"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 12 16"><path fill-rule="evenodd" d="M6.5 0C3.48 0 1 2.19 1 5c0 .92.55 2.25 1 3 1.34 2.25 1.78 2.78 2 4v1h5v-1c.22-1.22.66-1.75 2-4 .45-.75 1-2.08 1-3 0-2.81-2.48-5-5.5-5zm3.64 7.48c-.25.44-.47.8-.67 1.11-.86 1.41-1.25 2.06-1.45 3.23-.02.05-.02.11-.02.17H5c0-.06 0-.13-.02-.17-.2-1.17-.59-1.83-1.45-3.23-.2-.31-.42-.67-.67-1.11C2.44 6.78 2 5.65 2 5c0-2.2 2.02-4 4.5-4 1.22 0 2.36.42 3.22 1.19C10.55 2.94 11 3.94 11 5c0 .66-.44 1.78-.86 2.48zM4 14h5c-.23 1.14-1.3 2-2.5 2s-2.27-.86-2.5-2z"></path></svg></span>No esperes al deadline</div><div class="admonitionContent_BuS1"><p>La migración no es reversible y el portal legacy se apagará. Planifica con suficiente margen para resolver cualquier problema que surja durante el proceso.</p></div></div>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-preguntas-frecuentes">❓ Preguntas Frecuentes<a href="#-preguntas-frecuentes" class="hash-link" aria-label="Enlace directo al ❓ Preguntas Frecuentes" title="Enlace directo al ❓ Preguntas Frecuentes" translate="no">​</a></h2>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><strong>¿Puedo seguir usando el portal legacy después de migrar?</strong></summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+<p>No. Una vez completada la migración, el acceso se traslada exclusivamente a la nueva experiencia en la consola AWS. El portal legacy ya no estará disponible para tu organización.</p>
+</div></div></details>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><strong>¿Qué pasa si no migro antes del deadline?</strong></summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+<p>Después del 30 de septiembre de 2026, el portal legacy será desactivado. Perderás acceso a oportunidades, co-sell engagements, aprobaciones de reseller y metadata de soluciones hasta que completes la migración.</p>
+</div></div></details>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><strong>¿Puedo cambiar la cuenta AWS vinculada después de migrar?</strong></summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+<p>No. La vinculación es permanente después de la migración. Antes de migrar puedes desvincular y elegir otra cuenta. Elige cuidadosamente antes de ejecutar la migración.</p>
+</div></div></details>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><strong>¿La migración afecta a mis listings en AWS Marketplace?</strong></summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+<p>No. Tus listings de Marketplace se mantienen intactos. La diferencia es que ahora los gestionarás desde la misma consola donde accedes a Partner Central, en lugar de usar el Marketplace Management Portal por separado.</p>
+</div></div></details>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><strong>¿Necesito una cuenta AWS nueva o puedo usar una existente?</strong></summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+<p>Puedes usar una cuenta existente, pero AWS recomienda usar una cuenta dedicada que represente tu negocio global como partner. Si ya tienes una cuenta de Marketplace seller, esa es una buena candidata.</p>
+</div></div></details>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><strong>¿Cómo gestiono el acceso si tengo un equipo grande?</strong></summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+<p>Para equipos grandes (&gt;5 personas), AWS recomienda usar <strong>IAM Identity Center</strong> (antes AWS SSO) para federar con tu proveedor de identidad corporativo (Okta, Azure AD, Google Workspace). Esto permite gestión centralizada y SSO.</p>
+</div></div></details>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><strong>¿Las APIs legacy de S3 seguirán funcionando?</strong></summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+<p>No a largo plazo. AWS está deprecando las integraciones S3 legacy. Debes migrar a las nuevas Partner Central APIs (Selling API, Benefits API, Channel API). Contacta a tu proveedor de integración para coordinar el timeline.</p>
+</div></div></details>
+<details class="details_lb9f alert alert--info details_b_Ee" data-collapsed="true"><summary><strong>¿Cuánto cuesta la migración?</strong></summary><div><div class="collapsibleContent_i85q">
+<!-- -->
+<p>La migración en sí no tiene costo. AWS y varios Launch Partners (WorkSpan, Labra, Clazar) ofrecen asistencia gratuita para completar la migración.</p>
+</div></div></details>
+<hr>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="-recursos-adicionales">📚 Recursos Adicionales<a href="#-recursos-adicionales" class="hash-link" aria-label="Enlace directo al 📚 Recursos Adicionales" title="Enlace directo al 📚 Recursos Adicionales" translate="no">​</a></h2>
+<ul>
+<li class="">📖 <a href="https://docs.aws.amazon.com/partner-central/latest/getting-started/migrating-to-partner-central.html" target="_blank" rel="noopener noreferrer" class="">Documentación oficial de migración</a></li>
+<li class="">🔗 <a href="https://docs.aws.amazon.com/partner-central/latest/getting-started/linking-prerequisites.html" target="_blank" rel="noopener noreferrer" class="">Prerequisitos de Account Linking</a></li>
+<li class="">👤 <a href="https://docs.aws.amazon.com/partner-central/latest/getting-started/user-role-mapping.html" target="_blank" rel="noopener noreferrer" class="">Mapeo de roles IAM</a></li>
+<li class="">🏠 <a href="https://console.aws.amazon.com/partnercentral" target="_blank" rel="noopener noreferrer" class="">AWS Partner Central (nueva experiencia)</a></li>
+<li class="">📊 <a href="https://docs.aws.amazon.com/partner-central/latest/APIReference/aws-partner-central-api-reference-guide.html" target="_blank" rel="noopener noreferrer" class="">Partner Central Selling API</a></li>
+<li class="">🎁 <a href="https://docs.aws.amazon.com/partner-central/latest/APIReference/using-the-benefits-api.html" target="_blank" rel="noopener noreferrer" class="">Partner Central Benefits API</a></li>
+<li class="">📝 <a href="https://aws.amazon.com/blogs/apn/announcing-aws-partner-central-in-the-aws-management-console/" target="_blank" rel="noopener noreferrer" class="">Blog: Announcing AWS Partner Central in the Console</a></li>
+<li class="">🤖 <a href="https://docs.aws.amazon.com/partner-central/latest/getting-started/partner-onboarding-agent.html" target="_blank" rel="noopener noreferrer" class="">Agente de IA para onboarding</a></li>
+</ul>
+<hr>
+<p><em>Guía creada por el equipo de AWS Solution Architects — Cloud Architect Library</em></p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/Cloud-Architect-Library/guides/tree/main/docs/partners/apn-3-migration.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Editar esta página</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Página del documento"><a class="pagination-nav__link pagination-nav__link--prev" href="/guides/docs/partners/prm-onboarding"><div class="pagination-nav__sublabel">Anterior</div><div class="pagination-nav__label">PRM - Partner Revenue Measurement</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#-introducción" class="table-of-contents__link toc-highlight">📋 Introducción</a><ul><li><a href="#qué-cambia-con-apn-30" class="table-of-contents__link toc-highlight">¿Qué cambia con APN 3.0?</a></li></ul></li><li><a href="#-prerequisitos" class="table-of-contents__link toc-highlight">✅ Prerequisitos</a><ul><li><a href="#1-identificar-al-alliance-lead" class="table-of-contents__link toc-highlight">1. Identificar al Alliance Lead</a></li><li><a href="#2-cuenta-aws-preparada" class="table-of-contents__link toc-highlight">2. Cuenta AWS preparada</a></li><li><a href="#3-plan-de-gestión-de-usuarios" class="table-of-contents__link toc-highlight">3. Plan de gestión de usuarios</a></li><li><a href="#4-integraciones-existentes" class="table-of-contents__link toc-highlight">4. Integraciones existentes</a></li></ul></li><li><a href="#️-paso-1-vincular-la-cuenta-aws" class="table-of-contents__link toc-highlight">🛠️ Paso 1: Vincular la Cuenta AWS</a><ul><li><a href="#proceso-de-account-linking" class="table-of-contents__link toc-highlight">Proceso de Account Linking</a></li><li><a href="#pasos-detallados" class="table-of-contents__link toc-highlight">Pasos detallados</a></li></ul></li><li><a href="#-paso-2-configurar-roles-iam" class="table-of-contents__link toc-highlight">👥 Paso 2: Configurar Roles IAM</a><ul><li><a href="#roles-principales" class="table-of-contents__link toc-highlight">Roles principales</a></li><li><a href="#crear-roles-con-políticas-aws-managed" class="table-of-contents__link toc-highlight">Crear roles con políticas AWS managed</a></li><li><a href="#mapear-usuarios-a-roles-iam" class="table-of-contents__link toc-highlight">Mapear usuarios a roles IAM</a></li><li><a href="#ejemplo-política-iam-para-equipo-de-co-sell" class="table-of-contents__link toc-highlight">Ejemplo: Política IAM para equipo de Co-sell</a></li><li><a href="#ejemplo-política-iam-para-benefits-api" class="table-of-contents__link toc-highlight">Ejemplo: Política IAM para Benefits API</a></li></ul></li><li><a href="#-paso-3-ejecutar-la-migración" class="table-of-contents__link toc-highlight">🔄 Paso 3: Ejecutar la Migración</a><ul><li><a href="#proceso-de-migración" class="table-of-contents__link toc-highlight">Proceso de migración</a></li><li><a href="#tiempos-estimados" class="table-of-contents__link toc-highlight">Tiempos estimados</a></li><li><a href="#qué-se-migra-automáticamente" class="table-of-contents__link toc-highlight">Qué se migra automáticamente</a></li><li><a href="#qué-no-se-migra-automáticamente" class="table-of-contents__link toc-highlight">Qué NO se migra automáticamente</a></li></ul></li><li><a href="#-paso-4-migrar-integraciones" class="table-of-contents__link toc-highlight">🔗 Paso 4: Migrar Integraciones</a><ul><li><a href="#integraciones-s3-legacy--partner-central-apis" class="table-of-contents__link toc-highlight">Integraciones S3 Legacy → Partner Central APIs</a></li><li><a href="#conector-nativo-de-crm-salesforce" class="table-of-contents__link toc-highlight">Conector nativo de CRM (Salesforce)</a></li><li><a href="#proveedores-de-integración-compatibles" class="table-of-contents__link toc-highlight">Proveedores de integración compatibles</a></li></ul></li><li><a href="#️-paso-5-validar-y-verificar" class="table-of-contents__link toc-highlight">✔️ Paso 5: Validar y Verificar</a><ul><li><a href="#checklist-post-migración" class="table-of-contents__link toc-highlight">Checklist post-migración</a></li><li><a href="#comando-de-verificación-rápida" class="table-of-contents__link toc-highlight">Comando de verificación rápida</a></li></ul></li><li><a href="#️-troubleshooting" class="table-of-contents__link toc-highlight">⚠️ Troubleshooting</a></li><li><a href="#-timeline-recomendado" class="table-of-contents__link toc-highlight">📅 Timeline Recomendado</a></li><li><a href="#-preguntas-frecuentes" class="table-of-contents__link toc-highlight">❓ Preguntas Frecuentes</a></li><li><a href="#-recursos-adicionales" class="table-of-contents__link toc-highlight">📚 Recursos Adicionales</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Contenido</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/guides/docs/intro">Introducción</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Recursos</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://aws.amazon.com/architecture/" target="_blank" rel="noopener noreferrer" class="footer__link-item">AWS Architecture Center<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Autor</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://www.linkedin.com/in/david-del-ojo-redondo/" target="_blank" rel="noopener noreferrer" class="footer__link-item">David del Ojo Redondo<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://www.linkedin.com/in/david-del-ojo-redondo/" target="_blank" rel="noopener noreferrer" class="footer__link-item">LinkedIn<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://github.com/DavidDelOjo" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 David del Ojo Redondo. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
