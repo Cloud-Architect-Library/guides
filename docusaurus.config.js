@@ -104,8 +104,25 @@ const config = {
               },
             ],
           },
+          {
+            title: 'Autor',
+            items: [
+              {
+                label: 'David del Ojo Redondo',
+                href: 'https://www.linkedin.com/in/david-del-ojo-redondo/',
+              },
+              {
+                label: 'LinkedIn',
+                href: 'https://www.linkedin.com/in/david-del-ojo-redondo/',
+              },
+              {
+                label: 'GitHub',
+                href: 'https://github.com/Cloud-Architect-Library',
+              },
+            ],
+          },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Cloud Architect Library. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} David del Ojo Redondo. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
