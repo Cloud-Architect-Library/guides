@@ -117,7 +117,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/Cloud-Architect-Library',
+                href: 'https://github.com/DavidDelOjo',
               },
             ],
           },
