@@ -91,6 +91,7 @@ El formato del product code es una cadena alfanumérica, por ejemplo: `5ugbbrmu7
 - Producto que realiza llamadas regulares a la API/CLI de AWS
 - Capacidad de modificar el User Agent en las llamadas del AWS SDK
 - Conocer el formato: `APN_1.1/pc_<YOUR-PRODUCT-CODE>$`
+- **Requisito operativo:** tu producto debe ejecutar al menos una operación API sobre un recurso al mes para que ese período contribuya a la atribución
 
 </details>
 
@@ -263,6 +264,10 @@ aws bedrock tag-resource \
 
 Incluye el User Agent string en cada llamada individual al SDK de AWS.
 
+:::caution Requisito operativo
+Para que la atribución por User Agent sea efectiva, tu producto debe ejecutar **al menos una operación API sobre un recurso al mes**. Si no hay operaciones en un mes dado, ese período no contribuirá a la atribución de ingresos.
+:::
+
 **Python (Boto3):**
 ```python
 import boto3
@@ -270,8 +275,10 @@ from botocore.config import Config
 
 UA_STRING = "APN_1.1/pc_5ugbbrmu7ud3u5hsipfzug61p$"
 
-# Crear config con User Agent personalizado
-session_config = Config(user_agent=UA_STRING)
+# Usar user_agent_extra para AÑADIR el identificador PRM al User Agent existente.
+# ⚠️ No uses user_agent (sin _extra), ya que reemplaza el header completo
+# y elimina la metadata del SDK que AWS necesita para procesar la atribución.
+session_config = Config(user_agent_extra=UA_STRING)
 
 # Cliente EC2
 ec2 = boto3.client('ec2', config=session_config)
@@ -324,21 +331,88 @@ const response = await ec2Client.send(new DescribeInstancesCommand({}));
 
 #### Implementación Automatizada (Recomendado)
 
-Para soluciones que hacen múltiples llamadas API/CLI, puedes automatizar la inclusión del User Agent usando la configuración de **Application ID** del AWS SDK en lugar de instrumentar cada llamada individualmente.
+Para soluciones que hacen múltiples llamadas API/CLI, puedes automatizar la inclusión del User Agent a nivel de sesión o proceso en lugar de instrumentar cada llamada individualmente.
 
-**Variable de entorno:**
-```bash
-export AWS_SDK_UA_APP_ID="APN_1.1/pc_5ugbbrmu7ud3u5hsipfzug61p$"
+:::warning Nota sobre `AWS_SDK_UA_APP_ID` / `sdk_ua_app_id`
+Algunos SDKs emiten el Application ID con el prefijo `app/` y restringen caracteres especiales (como `/` y `$`), lo que puede alterar el formato PRM requerido. **Se recomienda usar los mecanismos de "user agent extra/suffix" nativos de cada SDK** que se muestran a continuación.
+:::
+
+**Python (Boto3) — Configuración global de sesión:**
+```python
+import boto3
+from botocore.config import Config
+
+UA_STRING = "APN_1.1/pc_5ugbbrmu7ud3u5hsipfzug61p$"
+
+# Configurar una vez a nivel de sesión
+session = boto3.Session()
+prm_config = Config(user_agent_extra=UA_STRING)
+
+# Todos los clientes creados desde esta config heredan el User Agent
+ec2 = session.client('ec2', config=prm_config)
+s3 = session.client('s3', config=prm_config)
+bedrock = session.client('bedrock-runtime', config=prm_config)
 ```
 
-**Archivo de configuración AWS (`~/.aws/config`):**
-```ini
-[default]
-sdk_ua_app_id = APN_1.1/pc_5ugbbrmu7ud3u5hsipfzug61p$
+**Java (AWS SDK v2) — Suffix global:**
+```java
+import software.amazon.awssdk.core.client.config.ClientOverrideConfiguration;
+import software.amazon.awssdk.core.client.config.SdkAdvancedClientOption;
+
+private static final String UA_STRING = "APN_1.1/pc_5ugbbrmu7ud3u5hsipfzug61p$";
+
+// Configuración reutilizable para todos los clientes
+ClientOverrideConfiguration prmConfig = ClientOverrideConfiguration.builder()
+    .putAdvancedOption(SdkAdvancedClientOption.USER_AGENT_SUFFIX, UA_STRING)
+    .build();
+
+Ec2Client ec2 = Ec2Client.builder().overrideConfiguration(prmConfig).build();
+S3Client s3 = S3Client.builder().overrideConfiguration(prmConfig).build();
+```
+
+**Node.js (AWS SDK v3) — Custom User Agent:**
+```javascript
+import { EC2Client } from "@aws-sdk/client-ec2";
+import { S3Client } from "@aws-sdk/client-s3";
+
+const UA_STRING = "APN_1.1/pc_5ugbbrmu7ud3u5hsipfzug61p$";
+
+// customUserAgent añade el string como suffix sin alterar el formato
+const ec2 = new EC2Client({ customUserAgent: UA_STRING });
+const s3 = new S3Client({ customUserAgent: UA_STRING });
+```
+
+**Go (AWS SDK v2):**
+```go
+import (
+    "github.com/aws/aws-sdk-go-v2/aws"
+    "github.com/aws/aws-sdk-go-v2/config"
+)
+
+cfg, _ := config.LoadDefaultConfig(context.TODO(),
+    config.WithAPIOptions(
+        middleware.AddUserAgentKeyValue("APN_1.1/pc_5ugbbrmu7ud3u5hsipfzug61p$", ""),
+    ),
+)
+```
+
+**CLI — Variable de entorno (para scripts y pipelines):**
+```bash
+# Funciona con AWS CLI v2 — se añade al User Agent de cada comando
+export AWS_EXECUTION_ENV="APN_1.1/pc_5ugbbrmu7ud3u5hsipfzug61p$"
 ```
 
 :::tip Cobertura de servicios
 AWS PRM tiene la intención de soportar todos los servicios AWS. Se recomienda instrumentar PRM en todos los servicios y recursos con los que tu solución interactúa, para evitar cambios operacionales continuos a medida que la cobertura de servicios se expande.
+:::
+
+:::caution Exclusiones y limitaciones por servicio
+No todos los servicios atribuyen ingresos de la misma forma. Por ejemplo, para S3 la atribución puede cubrir solo costos de almacenamiento y no de requests, y algunos servicios tienen exclusiones específicas. **Antes de estimar revenue**, verifica la cobertura exacta de cada servicio:
+
+- 📋 [Servicios soportados para Resource Tagging](https://docs.aws.amazon.com/PRM/latest/aws-prm-onboarding-guide/resource-tagging-included-services.html)
+- 📋 [Servicios soportados para User Agent String](https://docs.aws.amazon.com/PRM/latest/aws-prm-onboarding-guide/user-agent-included-services.html)
+
+Revisa estas listas periódicamente ya que AWS las actualiza a medida que añade nuevos servicios.
 :::
 
 ---
@@ -393,6 +467,7 @@ aws ec2 describe-instances --debug 2>&1 | grep -i "user-agent"
 - [ ] El delimitador `$` está presente al final
 - [ ] El product code es correcto y alfanumérico
 - [ ] El User Agent se incluye en todas las llamadas API relevantes
+- [ ] Tu producto ejecuta al menos una operación API al mes por recurso (requisito para que la atribución sea efectiva)
 
 ### 2. Entornos de Prueba
 
@@ -428,6 +503,10 @@ Una vez validado, accede al **Attributed Revenue Dashboard** en AWS Partner Cent
 - 📊 Visualiza ingresos atribuidos mensuales por producto
 - 📈 Desglosa por servicio AWS y período de facturación
 - 📋 Descarga reportes de consumo agregado
+
+:::warning Latencia de datos
+El dashboard de Attributed Revenue actualiza los datos aproximadamente **45 días después del cierre del mes de facturación**. No esperes ver resultados inmediatos tras desplegar tu implementación. Planifica al menos 2 meses desde el go-live en producción para poder validar datos reales en el dashboard.
+:::
 
 ---
 
@@ -473,6 +552,13 @@ PRM intenta soportar todos los servicios AWS. Se recomienda instrumentar en todo
 <summary><strong>¿Existe un agente de IA que me ayude con el onboarding?</strong></summary>
 
 Sí. AWS Partner Central ofrece agentes con IA que te guían a través del onboarding — desde completar tu perfil de partner y configurarte como seller en Marketplace, hasta alcanzar compliance con PRM. Accede desde [Partner Central](https://partnercentral.awspartner.com).
+
+</details>
+
+<details>
+<summary><strong>¿Qué pasa si mi producto no hace llamadas API todos los meses?</strong></summary>
+
+Para User Agent String, AWS requiere al menos una operación API sobre un recurso por mes para que ese período contribuya a la atribución de ingresos. Los meses sin actividad API no generarán datos en el dashboard de Attributed Revenue. Si tu producto tiene uso intermitente, considera complementar con Resource Tagging en los recursos de larga duración (la atribución por tag persiste mientras el recurso y el tag existan).
 
 </details>
 
