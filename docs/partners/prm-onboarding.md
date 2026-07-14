@@ -8,7 +8,8 @@ sidebar_position: 1
 # 📊 AWS Partner Revenue Measurement (PRM) — Guía de Onboarding
 
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
-![Partners](https://img.shields.io/badge/Partner_Network-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white)
+![Marketplace](https://img.shields.io/badge/AWS_Marketplace-232F3E?style=for-the-badge&logo=amazonaws&logoColor=white)
+![Partners](https://img.shields.io/badge/Partner_Network-527FFF?style=for-the-badge&logo=amazon-aws&logoColor=white)
 
 </div>
 
